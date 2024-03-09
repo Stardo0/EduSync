@@ -1,0 +1,104 @@
+:root {
+      --White: #FFF;
+      --LightBlack: #0F1116;
+      --black: #010609;
+}
+
+body {
+      background: var(--black);
+      margin: 0px;
+}
+
+.topbar {
+      margin: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.topbar .menu {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background-color: var(--LightBlack);
+      border-radius: 50px;
+}
+
+.topbar .menu .Button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 17px 20px;
+      gap: 10px;
+      font-family: Roboto;
+}
+
+.topbar .menu #bibliotek {
+      border-radius: 50px;
+      background: var(--White);
+      color: var(--black);
+}
+
+.topbar .menu #Planner {
+      border-radius: 50px;
+      background: var(--LightBlack);
+      color: var(--White);
+}
+
+.topbar .menu #faecher {
+      border-radius: 50px;
+      background: var(--LightBlack);
+      color: var(--White);
+} 
+
+.topbar .title {
+      color: var(--White);
+      font-family: Roboto;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 1.8px;
+}
+
+.topbar .search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 17px 20px;
+      background-color: var(--LightBlack);
+      color: var(--White);
+      font-family: Roboto;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      border-radius: 50px;
+}
+
+.topbar .seartch_and_profile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 21px;
+}
+
+.topbar .seartch_and_profile .profile img {
+      width: 56px;
+      height: 56px;
+      border-radius: 56px;
+}
+
+a:link { 
+      text-decoration: none; 
+    } 
+    a:visited { 
+      text-decoration: none; 
+    } 
+    a:hover { 
+      text-decoration: none; 
+    } 
+    a:active { 
+      text-decoration: none; 
+    }
