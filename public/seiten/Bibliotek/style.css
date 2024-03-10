@@ -102,3 +102,41 @@ a:link {
     a:active { 
       text-decoration: none; 
     }
+
+.seartch_and_profile .profile-menu {
+      border-radius: 25px;
+      background: var(--LightBlack);
+      position: absolute;
+      top: 100px;
+      right: 30px;
+      padding: 20px;
+      display: none;
+      max-width: 150px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+}
+
+.seartch_and_profile .profile-menu .settings {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      align-items: center;
+}
+
+.seartch_and_profile .profile-menu .login-logout {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      align-items: center;
+}
+
+.seartch_and_profile .profile-menu .text {
+      color: var(--White);
+      font-family: Roboto;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+}
