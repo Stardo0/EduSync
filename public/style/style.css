@@ -6,8 +6,12 @@
 
 :root {
       --white: #ffffff;
+      --text-color: #949faa;
       --light_dark: #010609;
       --dark: #010609;
+      --lightgrey: #282828;
+      --grey: #181818;
+      --darkgrey: #080808;
 }
 
 body {
@@ -19,14 +23,14 @@ body {
 .sections {
 }
 
-.menu_bar {
+header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 40px 40px 0px 40px;
 }
 
-.menu_bar .title {
+header .title {
       color: var(--white);
       font-family: Roboto;
       font-size: 36px;
@@ -36,7 +40,7 @@ body {
       letter-spacing: 1.8px;
 }
 
-.menu_bar .btn_white_container {
+header .btn_white_container {
       display: flex;
       width: 203px;
       padding: 10px;
@@ -49,7 +53,7 @@ body {
       cursor: pointer;
 }
 
-.menu_bar .btn_white_container .btn_white {
+header .btn_white_container .btn_white {
       color: var(--dark);
       font-family: Roboto;
       font-size: 24px;
@@ -61,7 +65,7 @@ body {
 }
 
 
-.sections .introduction {
+.sections #introduction {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -70,7 +74,7 @@ body {
       margin-bottom: 100px;
 }
 
-.sections .introduction .text .title {
+.sections #introduction .text .title {
       color: #FFF;
       font-family: Roboto;
       font-size: 48px;
@@ -79,7 +83,7 @@ body {
       line-height: normal;
 }
 
-.sections .introduction .text .subtitle {
+.sections #introduction .text .subtitle {
       color: #FFF;
       text-align: center;
       font-family: Roboto;
@@ -90,36 +94,36 @@ body {
       width: 425px;
 }
 
-.sections .introduction .text {
+.sections #introduction .text {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 27px;
 }
 
-.sections .introduction .mockup img {
+.sections #introduction .mockup img {
       width: 502px;
       height: 288px;
 }
 
-.sections .features {
+.sections #features {
       background-color: var(--white);
       width: 100%;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 50px;
+      gap: 5px;
 }
 
 
-.sections .features .content_left {
+.sections #features .content_left {
       display: flex;
       flex-direction: column;
       gap: 36px;
 }
 
-.sections .features .content_left .featur .featur_title {
+.sections #features .content_left .featur .featur_title {
       color: var(--dark);
       font-family: Roboto;
       font-size: 32px;
@@ -128,7 +132,7 @@ body {
       line-height: normal;
 }
 
-.sections .features .content_left .featur .feature_text {
+.sections #features .content_left .featur .feature_text {
       max-width: 478px;
       color: var(--dark);
       font-family: Roboto;
@@ -138,7 +142,7 @@ body {
       line-height: normal;
 }
 
-.sections .features .content_left .title {
+.sections #features .content_left .title {
       color: var(--dark);
       font-family: Roboto;
       font-size: 48px;
@@ -148,7 +152,7 @@ body {
       margin-top: 60px;
 }
 
-.sections .features .content_left .featur {
+.sections #features .content_left .featur {
       display: flex;
       align-items: center;
       gap: 25px;
@@ -158,7 +162,7 @@ body {
       margin-bottom: 60px;
 }
 
-.sections .pricing .text .title {
+.sections #pricing .text .title {
       color: #FFF;
       text-align: center;
       font-family: Roboto;
@@ -169,7 +173,7 @@ body {
       width: 432px;
 }
 
-.sections .pricing .text .subtitle {
+.sections #pricing .text .subtitle {
       width: 425px;
       color: var(--white);
       text-align: center;
@@ -180,20 +184,20 @@ body {
       line-height: normal;
 }
 
-.sections .pricing {
+.sections #pricing {
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 60px 0px 60px 0px;
 }
 
-.sections .testing {
+.sections #testing {
       background-color: var(--white);
       width: 100%;
       height: 100%;
 }
 
-.sections .testing .left .title {
+.sections #testing .left .title {
       color: var(--dark);
       text-align: center;
       font-family: Roboto;
@@ -202,13 +206,13 @@ body {
       font-weight: 800;
       line-height: normal;
 }
-.sections .testing {
+.sections #testing {
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 60px 0px 60px 0px;
 }
-.sections .testing .left .subtitle {
+.sections #testing .left .subtitle {
       color: var(--dark);
       text-align: center;
       font-family: Roboto;
@@ -219,7 +223,7 @@ body {
       width: 500px;
 }
  
-.sections .testing .left .button {
+.sections #testing .left .button {
       color: var(--white);
       text-align: center;
       font-family: Roboto;
@@ -233,14 +237,14 @@ body {
       padding: 10px;
 }
 
-.sections .testing .left {
+.sections #testing .left {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
 }
 
-.sections .ende .rechtliches .title {
+.sections footer .rechtliches .title {
       color: var(--white);
       text-align: center;
       font-family: Roboto;
@@ -250,7 +254,7 @@ body {
       line-height: normal;
 }
 
-.sections .ende .rechtliches .Impressum, .Datenschutz {
+.sections footer .rechtliches .Impressum, .Datenschutz {
       color: var(--white);
       text-align: center;
       font-family: Roboto;
@@ -261,7 +265,7 @@ body {
       text-decoration-line: underline;
 }
 
-.sections .ende .ueberuns .title {
+.sections footer .ueberuns .title {
       color: var(--white);
       text-align: center;
       font-family: Roboto;
@@ -271,7 +275,7 @@ body {
       line-height: normal;
 }
 
-.sections .ende .ueberuns .text, .marc {
+.sections footer .ueberuns .text, .marc {
       color: var(--white);
       text-align: center;
       font-family: Roboto;
@@ -284,7 +288,7 @@ body {
       width: 224px;
 }
 
-.sections .ende {
+.sections footer {
       display:  flex;
       justify-content: center;
       align-items: center;
@@ -301,7 +305,6 @@ a:active{
 }
 
 a:hover{
-    color: var(--tuerkis);
     text-decoration: underline;
 }
     
