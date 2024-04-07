@@ -1,12 +1,13 @@
 body {
       margin: 0px;
+      user-select: none;
 }
 
 .container {
-      justify-content: center;
-      align-items: center;
       display: flex;
-      gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Setzt die Höhe des Containers auf 100% der Bildschirmhöhe */
 }
 
 
@@ -17,4 +18,24 @@ body {
       font-size: 42px;
       color: #2F27CE;
       height: Hug (684px);
+}
+
+.container .right .title {
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 25px;
+      color: #333333;
+}
+
+.container .right .subtitle {
+      font-family: Roboto;
+      font-weight: 300;
+      font-size: 17.03px;
+      color: #333333;
+}
+
+.container .right .field {
+      background-color: #FFFFFF;
+      border-radius: 21.29px;
+      box-shadow: 0px 0px 111.54px rgba(0, 0, 0, 0.25);
 }
