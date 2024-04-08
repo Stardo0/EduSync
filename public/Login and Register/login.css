@@ -3,14 +3,18 @@ body {
       user-select: none;
 }
 
+a {
+      text-decoration: none;
+}
+
 .container {
       display: flex;
       gap: 100px;
       justify-content: center;
       align-items: center;
       height: 100vh; /* Setzt die Höhe des Containers auf 100% der Bildschirmhöhe */
-      zoom: 0.9;
-      margin-top: 2vw;
+      zoom: 0.8;
+      margin-top: 5vw;
 }
 
 

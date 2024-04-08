@@ -1,0 +1,186 @@
+body {
+      margin: 0px;
+      user-select: none;
+}
+
+a {
+      text-decoration: none;
+}
+
+.container {
+      display: flex;
+      gap: 100px;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Setzt die Höhe des Containers auf 100% der Bildschirmhöhe */
+      zoom: 0.8;
+      margin-top: 5vw;
+}
+
+
+
+.container .left .title {
+      font-family: Roboto;
+      font-weight: 700;
+      font-size: 42px;
+      color: #2F27CE;
+      height: Hug (684px);
+}
+
+.container .right .title {
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 25px;
+      color: #333333;
+}
+
+.container .right .subtitle {
+      font-family: Roboto;
+      font-weight: 300;
+      font-size: 17.03px;
+      color: #333333;
+}
+
+.container .right .field {
+      background-color: #FFFFFF;
+      border-radius: 21.29px;
+      box-shadow: 0px 0px 91.54px rgba(0, 0, 0, 0.10);
+}
+
+.container .right .field .Email .t-title {
+      font-family: Roboto;
+      font-size: 15.88px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+}
+
+.container .right .field .Email {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;  
+}
+
+.container .right .field .password .t-title {
+      font-family: Roboto;
+      font-size: 15.88px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+}
+
+.container .right .field .Email .input input {
+      all: unset;
+      background-color: #F9F9F9;
+      padding: 10px 20px 10px 20px;
+      font-family: Roboto;
+      font-size: 15px;
+      border-radius: 10.22px;
+      width: 300px;
+      height: 25px;
+}
+
+.container .right .field .Name .input input{
+      all: unset;
+      background-color: #F9F9F9;
+      padding: 10px 20px 10px 20px;
+      font-family: Roboto;
+      font-size: 15px;
+      border-radius: 10.22px;
+      width: 300px;
+      height: 25px;
+}
+
+.container .right .field .Name .t-title {
+      font-family: Roboto;
+      font-size: 15.88px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+}
+
+.container .right .field .Name {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;  
+}
+
+.container .right .field .password .input input {
+      all: unset;
+      background-color: #F9F9F9;
+      padding: 10px 20px 10px 20px;
+      font-family: Roboto;
+      font-size: 15px;
+      border-radius: 10.22px;
+      width: 300px;
+      height: 25px;
+}
+
+.container .right .field {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 30px;
+}
+
+.container .right .field .password {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;  
+}
+
+.container .right .field .login_icons {
+      display: flex;
+      justify-content: space-between;
+}
+
+.container .right .field .login_icons .button {
+      background-color: #F9F9F9;
+      padding: 15px 40px 15px 40px;
+      border-radius: 10.22px;
+      align-items: center;
+      display: flex;
+}
+
+.container .right .subtitle {
+      margin-bottom: 10px;
+}
+
+.container .right .field .login_btn {
+      background-color: #2F27CE;
+      color: white;
+      padding: 15px 40px 15px 40px;
+      border-radius: 10.22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Roboto;
+      cursor: pointer;
+}
+
+.container .right .field .or {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Roboto;
+      gap: 10px;
+}
+
+.container .right .field .or .line_1 {
+      width: 150px;
+      height: 1px;
+      background-color: #E2E2E2;
+}
+
+.container .right .field .no_account {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      font-family: Roboto;
+}
+
+.container .right .field .no_account .register_text {
+      color: #2F27CE;
+      font-weight: 700;
+      cursor: pointer;
+}
