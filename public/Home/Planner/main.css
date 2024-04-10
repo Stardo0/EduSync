@@ -48,12 +48,13 @@ body {
 }
 
 
-.menu .top .buttons #Home {
+.menu .top .buttons #Planner {
       background-color: #DEDCFF;
       color: #2F27CE;
       border-left: 0.5vh solid #2F27CE;
 
 }
+
 
 .menu .top .menu_buttons img {
       padding-left: 30%;

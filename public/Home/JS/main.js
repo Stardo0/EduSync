@@ -32,3 +32,11 @@ if (localStorage.getItem("profilePicture")) {
             document.getElementById("profile_picture").src = "../Pictures/icon-256x256.png";
       }
 }
+
+
+// Check if the local storage does not have a username or email
+if (!localStorage.getItem("username") || !localStorage.getItem("email")) {
+      // Redirect to another page
+      window.location.href = "../Login%20and%20Register/Login.html";
+}
+
