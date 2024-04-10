@@ -53,6 +53,7 @@ a {
       display: flex;
       align-items: center;
       gap: 9px;
+      margin-top: 10px;
 }
 
 .container .right .field .Email {
@@ -67,6 +68,7 @@ a {
       display: flex;
       align-items: center;
       gap: 9px;
+      margin-top: 10px;
 }
 
 .container .right .field .Email .input input {
@@ -131,15 +133,16 @@ a {
 
 .container .right .field .login_icons {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
 }
 
 .container .right .field .login_icons .button {
       background-color: #F9F9F9;
-      padding: 15px 40px 15px 40px;
+      padding: 15px 60px 15px 60px;
       border-radius: 10.22px;
       align-items: center;
       display: flex;
+      cursor: pointer;
 }
 
 .container .right .subtitle {

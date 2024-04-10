@@ -1,0 +1,125 @@
+body {
+      margin: 0px;
+      background-color: #FFFFFF;
+}
+
+.menu {
+      display: flex;
+      position: fixed;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      width: 40vh;
+      box-shadow: 0px 1vh 1vh rgba(0, 0, 0, 0.25);
+}
+
+.menu .top {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 8vh;
+}
+
+.menu .top .title {
+      font-size: 4.86vh;
+      font-family: Roboto;
+      font-weight: 700;
+      color: #2F27CE;
+      margin-top: 5vh;
+      align-items: center;
+}
+
+.menu .top .buttons .menu_buttons {
+      display: flex;
+      justify-content: flex-start;
+      width: 39.6vh;
+      padding: 1.9vh 0vh 1.9vh 0vh;
+      font-family: Roboto;
+      font-size: 3vh;
+      gap: 1vh;
+      align-items: center;
+      cursor: pointer;
+}
+
+.menu .top .buttons .menu_buttons img {
+      height: 3vh;
+      width: 4.5vh;
+}
+
+
+.menu .top .buttons #Home {
+      background-color: #DEDCFF;
+      color: #2F27CE;
+      border-left: 0.5vh solid #2F27CE;
+
+}
+
+.menu .top .menu_buttons img {
+      padding-left: 30%;
+
+}
+
+.menu .top .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5vh;
+}
+
+.menu .bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 10vh;
+}
+
+.menu .bottom .user {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5vh;
+      align-items: center;
+      background-color: #F1F1F1;
+      border-radius: 500px;
+      padding: 1vh 3vh 1vh 1vh;
+}
+
+.menu .bottom .user img {
+      border-radius: 50px;
+      height: 9vh;
+      width: 9vh;
+}
+
+.menu .bottom .user .text .name {
+      font-family: Roboto;
+      color: #676767;
+      font-size: 3vh;
+}
+
+.menu .bottom .user .text .email {
+      color: #515151;
+      font-size: 1.4vh;
+      font-family: Roboto;
+}
+
+.menu .bottom .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 5vh;
+      gap: 3vh;
+}
+
+.menu .bottom .buttons .button {
+      font-family: Roboto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5vh;
+      font-size: 3vh;
+      color: #515151;
+}
+
+.menu .bottom .buttons .button img {
+      height: 3vh;
+      width: 3vh;
+}
