@@ -83,7 +83,7 @@ body {
 }
 
 .menu .bottom .user img {
-      border-radius: 50px;
+      border-radius: 500px;
       height: 9vh;
       width: 9vh;
 }
@@ -126,4 +126,81 @@ body {
 
 .menu .bottom .buttons .button {
       cursor: pointer;
+}
+
+.container {
+      margin: 0vh 0vh 0vh 40vh;
+}
+
+.container .top-bar {
+      display: flex;
+      height: 10vh;
+      background-color: #FFFFFF;
+      box-shadow: 0px 1vh 1vh rgba(0, 0, 0, 0.10);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position:fixed;
+      width: 100%;
+}
+
+
+.container .top-bar .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 5vh;
+      gap: 2vh;
+}
+
+.container .top-bar .search-bar img {
+      height: 3vh;
+      width: 3vh;
+      z-index: 2;
+}
+
+.container .top-bar input {
+      font-family: Roboto;
+      font-size: 2.5vh;
+      color: #515151;
+      border: 0.1vh solid #DCDCDC;
+      background-color: #F9F9F9;
+      border-radius: 2vh;
+      padding: 1.5vh 6vh 1.5vh 6vh;
+      margin-left: -6.5vh;
+      z-index: 1;
+      transition: none;
+      outline: none;
+      width: 50vh;
+}
+
+.container .inhalt {
+      padding-top: 10vh;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+}
+
+.container .hello {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 120vh;
+      height: 25vh;
+      background-color: #DEDCFF;
+      border-radius: 5vh;
+      margin: 3vh;
+      padding: 2vh;
+}
+
+.container .hello img {
+      height: 25vh;
+      width: 25vh;
+}
+
+.container .inhalt .hello .left .title {
+      font-family: Roboto;
+      font-size: 3.5vh;
+      color: #575757;
+      font-weight: 500;
 }
