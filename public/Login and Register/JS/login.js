@@ -56,3 +56,24 @@ function loginWithGoogle() {
                   alert('Fehler beim Einloggen mit Google: ' + errorMessage);
             });
 }
+
+// Überprüfen, ob der Benutzer bereits eingeloggt ist
+if (localStorage.getItem('username') && localStorage.getItem('email')) {
+      // Auf eine andere Seite leiten
+      window.location.href = '../Home/index.html';
+}
+
+document.getElementById('PasswordReset').addEventListener('click', resetPassword);
+
+function resetPassword() {
+      var email = document.getElementById('email').value;
+
+      firebase.auth().sendPasswordResetEmail(email)
+            .then(() => {
+                  alert('Passwort-Reset-E-Mail wurde gesendet. Bitte überprüfen Sie Ihren Posteingang.');
+            })
+            .catch((error) => {
+                  var errorMessage = error.message;
+                  alert('Fehler beim Zurücksetzen des Passworts: ' + errorMessage);
+            });
+}

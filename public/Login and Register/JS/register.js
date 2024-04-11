@@ -54,3 +54,9 @@ function loginWithGoogle() {
                   alert('Fehler beim Einloggen mit Google: ' + errorMessage);
             });
 }
+
+// Überprüfen, ob der Benutzer bereits eingeloggt ist
+if (localStorage.getItem('username') && localStorage.getItem('email')) {
+      // Auf eine andere Seite leiten
+      window.location.href = '../Home/index.html';
+}
