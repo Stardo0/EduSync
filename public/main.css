@@ -1,0 +1,124 @@
+body {
+      margin: 0px;
+}
+
+.top_bar {
+      background-color: #F9F9F9;
+      display: flex;
+      flex-direction: row;
+      gap: 100vh;
+      align-items: center;
+      padding: 1.5vh 1.5vh 1vh 10vh;
+}
+
+.top_bar .title {
+      font-size: 5vh;
+      font-weight: bold;
+      color: #2F27CE;
+      font-family: Roboto;
+}
+
+.top_bar .buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 15vh;
+}
+
+.top_bar .buttons .button {
+      font-family: Roboto;
+      font-size: 3vh;
+      color: #333333;
+      cursor: pointer;
+}
+
+.top_bar .buttons .kleine_buttons{
+      display: flex;
+      flex-direction: row;
+      gap: 5vh;
+      align-items: center;
+}
+
+.top_bar .buttons .login {
+      background-color: #2F27CE;
+      color: white;
+      padding: 1.5vh 4vh;
+      border-radius: 1.5vh;
+      font-size: 3vh;
+      font-family: Roboto;
+      cursor: pointer;
+}
+
+.container {
+      display: flex;
+      flex-direction: column;
+}
+
+.container .intro {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+}
+
+.container .intro .texts {
+      display: flex;
+      gap: 3vh;
+      flex-direction: column;
+}
+
+.container .intro .texts .title {
+      font-size: 8vh;
+      font-family: Roboto;
+      font-weight: 900;
+      color: #2F27CE;
+}
+
+.container .intro .texts .subtitle {
+      color: #5F5757;
+      font-family: Roboto;
+      font-size: 4vh;
+      width: 60vh;
+}
+
+.container .intro .texts .button-part {
+      display: flex;
+      gap: 1vh;
+}
+
+.container .intro .texts .button-part .button {
+      color: #FFFFFF;
+      background-color: #2F27CE;
+      padding: 2vh 4vh 2vh 4vh;
+      border-radius: 1.5vh;
+      font-family: Roboto;
+      font-size: 2.5vh;
+      height: 3vh;
+}
+
+.container .intro .texts .button-part .arrow {
+      flex-direction: row;
+      display: flex;
+}
+
+.container .intro .texts .button-part .arrow img {
+      height: 9vh;
+      width: 20vh;
+}
+
+.container .intro .texts .button-part .arrow .text{
+      font-family: Roboto;
+      font-size: 2.5vh;
+      color: #5A69F2;
+      background-color: #F6F7FE;
+      border-radius: 20vh;
+      padding: 1.5vh;
+      height: 3vh;
+      transform: rotate(25deg);
+      margin-left: -6.5vh;
+      margin-top: -3vh;
+}
+
+.container .intro .illustration img {
+      height: 90vh;
+      width: 90vh;
+}
