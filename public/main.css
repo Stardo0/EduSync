@@ -126,17 +126,6 @@ body {
       width: 90vh;
 }
 
-@media (max-width: 730px) {
-      .container .intro .texts .button-part .arrow img {
-            height: 5vh;
-            width: 18vh;
-      }
-      .container .intro .illustration img {
-            height: 70vh;
-            width: 70vh;
-      }
-}
-
 .team {
       display: flex;
       align-items: center;
@@ -160,6 +149,7 @@ body {
       padding: 2.5vh 5vh 0vh 5vh;
       border-radius: 3vh;
       width: 35vh;
+      order: 1;
 }
 
 .team .people .person img {
@@ -193,6 +183,7 @@ body {
       display: flex;
       flex-direction: column;
       gap: 3vh;
+      order: 2;
 }
 
 .team .information .title {
@@ -218,4 +209,99 @@ body {
       font-family: Roboto;
       font-size: 2.5vh;
       cursor: pointer;
+}
+
+.features {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10vh;
+      margin: 20vh;
+}
+
+.features .tags {
+      display: flex;
+      gap: 3vh;
+}
+
+.features .texts {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+}
+
+.features .texts .title {
+      font-family: Roboto;
+      color: black;
+      font-size: 7vh;
+      font-weight: 650;
+}
+
+.features .texts .line {
+      height: 3vh;
+      width: 20vh;
+      background-color: #DEDCFF;
+      margin-top: -3vh;
+      z-index: -1;
+      margin-bottom: 2vh;
+}
+
+.features .texts .subtitle {
+      font-family: Roboto;
+      color: #5F5757;
+      font-size: 3vh;
+      max-width: 90vh;
+      text-align: center;
+}
+
+.features .tags .tag {
+      display: flex;
+      gap: 2.5vh;
+      align-items: center;
+      justify-content: center;
+}
+
+.features .tags {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+} 
+
+.features .tags .tag .text {
+      font-family: Roboto;
+      font-size: 4vh;
+      color: #000000;
+      font-weight: 900;
+
+}
+
+.features .tags .tag img {
+      height: 12vh;
+      width: 12vh;
+}
+
+@media (max-width: 730px) {
+      .container .intro .illustration img {
+            height: 70vh;
+            width: 70vh;
+      }
+      .container .intro {
+            flex-wrap: wrap;
+            margin-top: 15vh;
+      }
+      .team {
+            flex-direction: column;
+      }
+      .team .people {
+            width: 94vh;
+            order: 2;
+      }
+      .team .information {
+            order: 1;
+            margin-bottom: 6vh;
+      }
+      .buttons .kleine_buttons .button {
+            display: none ;
+      }
 }
