@@ -210,3 +210,42 @@ body {
       font-family: Roboto;
       font-weight: 300;
 }
+
+.search-auto-complete {
+      display: none;
+      position: absolute;
+      margin-top: -1px;
+      border: 1px solid rgba(0, 0, 0, 0.54);
+      padding: 4px 0;
+      width: 100%;
+      z-index: 1;
+      background: #fff;
+      transition: none;
+    }
+    
+    .search-auto-complete.show {
+      display: block;
+    }
+    
+    .search-auto-complete ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      transition: none;
+    }
+    
+    .auto-complete-item {
+      padding: 4px 8px;
+    }
+    
+    .auto-complete-item:hover {
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.12);
+    }
+    
+    .auto-complete-item.selected {
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+
+

@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // Add event listener to the Planner div
 document.getElementById("Planner").addEventListener("click", function() {
       // Redirect to another page
@@ -33,3 +35,24 @@ if (localStorage.getItem("profilePicture")) {
             document.getElementById("profile_picture").src = "../Pictures/icon-256x256.png";
       }
 }
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
