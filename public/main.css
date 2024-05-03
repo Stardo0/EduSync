@@ -53,6 +53,7 @@ body {
 .container {
       display: flex;
       flex-direction: column;
+      width: 100%;
 }
 
 .container .intro {
@@ -304,4 +305,84 @@ body {
       .buttons .kleine_buttons .button {
             display: none ;
       }
+      .features .tags {
+            flex-direction: column;
+      }
 }
+
+
+            @media (max-width: 530px) {
+                  .container {
+                        transform: scale(0.5);
+                        transform-origin: top;
+                  }
+
+                  .top_bar {
+                        gap: 0vh;
+                        padding-left: 1vh;
+                  }
+
+                  .top_bar .title {
+                        transform: scale(0.8);
+                        padding: 0vh;
+                  }
+                  .top_bar .buttons {
+                        gap: 0vh;
+                        margin-right: 0vh;
+                  }
+                  .top_bar .buttons .login {
+                        transform: scale(0.8);
+                        margin-right: 0vh;
+                  }
+                  .container {
+                        width:inherit ;
+                        margin: 0vh;
+                        height: 100%;
+                  }
+
+                  .top_bar .buttons .kleine_buttons {
+                        gap: 0vh;
+                  }
+            }
+
+      @media (max-width: 430px) {
+            .team .people .person img {
+                  width: 35vh;
+            }
+
+            .team .people .person {
+                  width: 30vh;
+            }
+
+            .team .people {
+                  justify-content: center;
+                  align-items: center;
+            }
+            .container .intro .illustration img {
+                  margin-left: -10vh;
+            }
+      }
+
+
+
+
+/* unvisited link */
+a:link {
+      text-decoration: none;
+    }
+    
+    /* visited link */
+    a:visited {
+      text-decoration: none;
+    }
+    
+    /* mouse over link */
+    a:hover {
+      text-decoration: none;
+    }
+    
+    /* selected link */
+    a:active {
+      text-decoration: none;
+    }
+    

@@ -204,3 +204,9 @@ body {
       color: #575757;
       font-weight: 500;
 }
+
+.container .inhalt .hello .left .subtitle {
+      font-size: 3vh;
+      font-family: Roboto;
+      font-weight: 300;
+}
