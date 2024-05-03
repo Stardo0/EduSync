@@ -42,23 +42,6 @@ if (localStorage.getItem("profilePicture")) {
 
 // Auto Complete
 
-let Subjects = [
-      'Pytaguras',
-      'Variables',
-      'Functions',
-      'Loops',
-      'Arrays',
-      'Strings',
-      'Objects',
-      'Classes',
-      'Inheritance',
-      'Polymorphism',
-      'Encapsulation',
-      'Abstraction',
-      'Data Types',
-      'Operators'
-];
-
 const resultBox = document.querySelector(".result-box");
 const inputBox = document.getElementById("searchbar");
 
@@ -92,7 +75,6 @@ document.addEventListener("click", function(event) {
             resultBox.innerHTML = '';
       }
 });
-
 
 
 

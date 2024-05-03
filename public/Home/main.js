@@ -3,7 +3,7 @@
 // Add event listener to the Planner div
 document.getElementById("Planner").addEventListener("click", function() {
       // Redirect to another page
-      window.location.href = "./Planner/index.html"; // Replace "https://example.com/planner" with the desired URL
+      window.location.href = "/public/Home/Planner/index.html"; // Replace "https://example.com/planner" with the desired URL
 });
 
 // Add event listener to the logout div
@@ -18,7 +18,7 @@ document.getElementById("Logout").addEventListener("click", function() {
       localStorage.removeItem("profilePicture");
 
       // Redirect to another page
-      window.location.href = "../Login%20and%20Register/Login.html"; // Replace "https://example.com" with the desired URL
+      window.location.href = "/public/Login%20and%20Register/Login.html"; // Replace "https://example.com" with the desired URL
 });
 
 // Check if the local storage has a profile picture
@@ -39,20 +39,10 @@ if (localStorage.getItem("profilePicture")) {
 // Auto Complete
 
 let Subjects = [
-      'Pytaguras',
+      'Python',
       'Variables',
-      'Functions',
-      'Loops',
-      'Arrays',
-      'Strings',
-      'Objects',
-      'Classes',
-      'Inheritance',
-      'Polymorphism',
-      'Encapsulation',
-      'Abstraction',
-      'Data Types',
-      'Operators'
+      'Pythagoras'
+
 ];
 
 const resultBox = document.querySelector(".result-box");
@@ -89,14 +79,33 @@ document.addEventListener("click", function(event) {
       }
 });
 
+// Add event listener to the "Enter" key press event
+inputBox.addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+            // Get the value from the input box
+            const searchText = inputBox.value;
 
+            // Redirect to the corresponding subject page
+            window.location.href = `./Subjects/${searchText}.html`;
+      }
+});
 
+// Add event listener to the result box
+resultBox.addEventListener("click", function(event) {
+      // Check if the clicked element is an <li> element
+      if (event.target.tagName === "LI") {
+            // Get the selected subject from the clicked <li> element
+            const selectedSubject = event.target.textContent;
 
+            // Redirect to the corresponding subject page
+            window.location.href = `./Subjects/${selectedSubject}.html`;
+      }
+});
 
+// Export the Subjects variable
+export { Subjects };
 
-
-
-
+// Rest of your code...
 
 
 

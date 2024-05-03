@@ -48,13 +48,12 @@ body {
 }
 
 
-.menu .top .buttons #Planner {
+.menu .top .buttons #Home {
       background-color: #DEDCFF;
       color: #2F27CE;
       border-left: 0.5vh solid #2F27CE;
 
 }
-
 
 .menu .top .menu_buttons img {
       padding-left: 30%;
@@ -178,6 +177,11 @@ body {
       width: 50vh;
 }
 
+.container .inhalt {
+      padding-top: 10vh;
+}
+
+
 .result-box {
       background-color: #F9F9F9;
       border-radius: 2.5vh;
@@ -195,6 +199,8 @@ body {
       padding: 1vh 39.9vh 1vh 2vh;
       position: relative;
       left: -2vh;
+      min-width: 16.35vh;
+      max-width: 16.35vh;
 }
 
 .container .top-bar .row {
@@ -213,4 +219,58 @@ body {
 
 ul {
       padding-left: 4vh;
+}
+
+.container .inhalt .back-button {
+      display: flex;
+      align-items: center;
+      gap: 1vh;
+      margin: 3vh 0vh 0vh 3vh;
+      background-color: #F9F9F9;
+      font-family: Roboto;
+      font-size: 3vh;
+      width: 14vh;
+      justify-content: center;
+      padding: 1vh;
+      border-radius: 5vh;
+      padding-right: 3vh;
+      cursor: pointer;
+}
+
+.container .inhalt {
+      display: flex;
+      flex-direction: column;
+}
+
+.container .inhalt .back-button img {
+      height: 3vh;
+      width: 3vh;
+}
+
+.container .inhalt .title {
+      font-family: Roboto;
+      margin: 3.5vh 0vh 0vh 4vh;
+      font-size: 4vh;
+      font-weight: 500;
+}
+
+.container .inhalt .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0px;
+}
+
+.container .inhalt .container .thema {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      box-shadow: 0px 0px 1vh rgba(0, 0, 0, 0.10);
+      margin: 5vh 4vh 0vh 4vh;
+      border-radius: 2vh;
+      
+}
+
+body::-webkit-scrollbar {
+      display: none;
 }
