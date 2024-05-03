@@ -1,4 +1,4 @@
-const fs = require('fs');
+
 
 // Add event listener to the Planner div
 document.getElementById("Planner").addEventListener("click", function() {
@@ -36,12 +36,58 @@ if (localStorage.getItem("profilePicture")) {
       }
 }
 
+// Auto Complete
 
+let Subjects = [
+      'Pytaguras',
+      'Variables',
+      'Functions',
+      'Loops',
+      'Arrays',
+      'Strings',
+      'Objects',
+      'Classes',
+      'Inheritance',
+      'Polymorphism',
+      'Encapsulation',
+      'Abstraction',
+      'Data Types',
+      'Operators'
+];
 
+const resultBox = document.querySelector(".result-box");
+const inputBox = document.getElementById("searchbar");
 
-  
+inputBox.onkeyup = function(){
+      let result = [];
+      let input = inputBox.value;
+      if(input.length){
+            result = Subjects.filter((keyword) => {
+                  return keyword.toLowerCase().includes(input.toLowerCase());
+            });
+      console.log(result);
+      display(result);
+      }
+}
 
+function display(result){
+      const content = result.map((list) => {
+            return "<li onclick=selectInput(this)>" + list + "</li>";
+      });
 
+      resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
+}
+
+function selectInput(list){
+      inputBox.value = list.textContent;
+      resultBox.innerHTML = '';
+}
+
+document.addEventListener("click", function(event) {
+      if (!event.target.matches("#searchbar")) {
+            resultBox.innerHTML = '';
+      }
+});
 
 
 

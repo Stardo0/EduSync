@@ -148,10 +148,13 @@ body {
 .container .top-bar .search-bar {
       display: flex;
       align-items: center;
-      justify-content: center;
       margin-left: 5vh;
       gap: 2vh;
+      position: fixed;
+      left: 40vh;
+      top: 1.8vh;
 }
+
 
 .container .top-bar .search-bar img {
       height: 3vh;
@@ -211,41 +214,41 @@ body {
       font-weight: 300;
 }
 
-.search-auto-complete {
-      display: none;
-      position: absolute;
-      margin-top: -1px;
-      border: 1px solid rgba(0, 0, 0, 0.54);
-      padding: 4px 0;
-      width: 100%;
-      z-index: 1;
-      background: #fff;
-      transition: none;
-    }
-    
-    .search-auto-complete.show {
-      display: block;
-    }
-    
-    .search-auto-complete ul {
-      margin: 0;
-      padding: 0;
+.result-box {
+      background-color: #F9F9F9;
+      border-radius: 2.5vh;
+      padding-top: 4vh;
+      font-family: Roboto;
+      font-size: 2.5vh;
+      max-height: 33.9vh;
+      overflow: hidden;
+}
+
+.result-box ul li {
       list-style: none;
-      transition: none;
-    }
-    
-    .auto-complete-item {
-      padding: 4px 8px;
-    }
-    
-    .auto-complete-item:hover {
+      border-radius: 1vh;
       cursor: pointer;
-      background: rgba(0, 0, 0, 0.12);
-    }
-    
-    .auto-complete-item.selected {
-      background: rgba(0, 0, 0, 0.12);
-    }
+      padding: 1vh 39.9vh 1vh 2vh;
+      position: relative;
+      left: -2vh;
+      min-width: 16.35vh;
+      max-width: 16.35vh;
+}
 
+.container .top-bar .row {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      left: 43.5vh;
+      top: 3.5vh;
+      align-items: start;
+      justify-content: flex-start;
+}
 
+.result-box ul li:hover {
+      background-color: #DEDCFF;
+}
 
+ul {
+      padding-left: 4vh;
+}
