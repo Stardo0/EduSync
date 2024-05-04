@@ -245,6 +245,7 @@ ul {
 .container .inhalt .back-button img {
       height: 3vh;
       width: 3vh;
+      stroke-width: 2;
 }
 
 .container .inhalt .title {
