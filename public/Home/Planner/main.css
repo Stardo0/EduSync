@@ -253,7 +253,14 @@ ul {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2vh;
+      gap: 6vh;
+      display: flex;
+      flex-direction: column;
+}
+
+.container .planner .inner-part .field {
+      display: flex;
+      gap: 3vh;
 }
 
 
@@ -295,14 +302,6 @@ ul {
       outline: none;
 }
 
-.container .planner .inner-part .input input:hover {
-      border: 0px solid;
-      background-color: transparent;
-      font-family: Roboto;
-      font-size: 2.7vh;
-      outline: none;
-}
-
 .container .planner .inner-part .chekbox {
       background-color: #F1F1F1;
       border-radius: 50vh;
@@ -313,4 +312,54 @@ ul {
 .container .planner .inner-part .chekbox img {
       width: 7vh;
       height: 7vh;
+}
+
+.planner .anzeige {
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+}
+
+.planner .anzeige .task {
+      display: flex;
+      gap: 30vh;
+      border: #CBCBCB 0.3vh solid;
+      padding: 3vh;
+      border-radius: 30vh;
+      font-family: Roboto;
+      font-size: 3vh;
+}
+
+.planner .anzeige .task #title {
+      border: 0px solid;
+      background-color: transparent;
+      font-family: Roboto;
+      font-size: 2.7vh;
+      width: 90vh;
+}
+
+.planner .anzeige .task input:focus {
+      border: 0px solid;
+      background-color: transparent;
+      font-family: Roboto;
+      font-size: 2.7vh;
+      outline: none;
+}
+
+.planner .anzeige .task input {
+      border: 0px solid;
+      background-color: transparent;
+      font-family: Roboto;
+      font-size: 2.7vh;
+      outline: none;
+}
+
+.planner .anzeige .element {
+      display: flex;
+      gap: 3vh;
+}
+
+.planner .anzeige p {
+      font-family: Roboto;
+      font-size: 2.5vh;
 }

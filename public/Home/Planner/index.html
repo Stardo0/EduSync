@@ -15,16 +15,17 @@
       <link rel="stylesheet" href="main.css">
       <script>
             var firebaseConfig = {
-                  apiKey: "AIzaSyBwnMr2pVjEp1lUiR5gk1kAW9OSq0ByF3s",
-                  authDomain: "edusync-7baf4.firebaseapp.com",
-                  projectId: "edusync-7baf4",
-                  storageBucket: "edusync-7baf4.appspot.com",
-                  messagingSenderId: "575775679661",
-                  appId: "1:575775679661:web:399b8865c7fb34092a9224",
-                  measurementId: "G-X065J8W6ZT"
+                  apiKey: "AIzaSyAEelaTWJI8exej7ZuVOAVSYgZMCeSoYj8",
+                  authDomain: "edu-sync-3mfrbg.firebaseapp.com",
+                  databaseURL: "https://edu-sync-3mfrbg-default-rtdb.europe-west1.firebasedatabase.app",
+                  projectId: "edu-sync-3mfrbg",
+                  storageBucket: "edu-sync-3mfrbg.appspot.com",
+                  messagingSenderId: "974399160164",
+                  appId: "1:974399160164:web:2f8ce4388c69dd34c14471"
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
+            var databaseRef = firebase.database().ref();
             
       </script>
       <div class="menu">
@@ -80,17 +81,21 @@
                         <div class="cloning-name">[cloning-name]</div>
                   </div>
                   <div class="inner-part">
-                        <div class="input">
-                              <input type="text" class="what" id="title" placeholder="Title...">
-                              <input type="date" class="date" placeholder="tt.mm.jj">
+                        <div class="field">
+                              <div class="input">
+                                    <input type="text" class="what" id="title" placeholder="Title...">
+                                    <input type="date" class="date" id="placeholder" placeholder="tt.mm.jj" >
+                              </div>
+                              <div class="chekbox">
+                                    <img src="../../Pictures/plus.svg">
+                              </div>
                         </div>
-                        <div class="chekbox">
-                              <img src="../../Pictures/plus.svg" alt="">
-                        </div>
-                  </div>
-                  <div class="anzeige">
                         
+                        <div class="anzeige" id="anzeige">
+                                              
+                        </div>
                   </div>
+                  
             </div>
       </div>
       <script src="../JS/username.js"></script>

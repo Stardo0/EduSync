@@ -19,14 +19,123 @@ document.getElementById("Logout").addEventListener("click", function() {
       window.location.href = "../../Login%20and%20Register/Login.html"; // Replace "https://example.com" with the desired URL
 });
 
-// Check if the local storage does not have a username or email
-if (!localStorage.getItem("username") || !localStorage.getItem("email")) {
-      // Redirect to another page
-      window.location.href = "../Login%20and%20Register/Login.html";
+
+
+
+
+// Get references to the input elements and the checkbox
+var titleInput = document.querySelector('.field .input #title');
+var dateInput = document.querySelector('.field .input #placeholder');
+var checkbox = document.querySelector('.chekbox');
+
+// Function to add a task to the display
+function addTaskToDisplay(task, taskId) {
+    var anzeigeDiv = document.getElementById("anzeige");
+    anzeigeDiv.innerHTML += `
+        <div class="element">
+            <div class="task" id="${taskId}">
+                <input type="text" class="what" id="title" placeholder="${task.title}" readonly>
+                <input type="date" class="date" id="${taskId}" value="${task.date}">
+            </div>
+            <div class="chekbox">
+                <img src="../../Pictures/charm_tick.svg" id="checkbox-id-${taskId}">
+            </div>
+        </div>
+    `;
+
+    // Add a change event listener to the date input field
+    document.getElementById(taskId).addEventListener('change', function() {
+        // Get the new date
+        var newDate = this.value;
+
+        // Update the date in the database
+        const username = localStorage.getItem("username");
+        const databaseRef = firebase.database().ref();
+        databaseRef.child("user").child(username).child("planner").child(taskId).update({ date: newDate });
+    });
+
+    // Add a click event listener to the checkbox to delete the task
+    document.getElementById("checkbox-id-" + taskId).addEventListener('click', function() {
+        const username = localStorage.getItem("username");
+        const databaseRef = firebase.database().ref();
+        databaseRef.child("user").child(username).child("planner").child(taskId).remove();
+        document.getElementById(taskId).parentNode.remove();
+    });
 }
 
+// Add a click event listener to the checkbox
+checkbox.addEventListener('click', function() {
+    // Get the input values
+    var title = titleInput.value;
+    var date = dateInput.value;
+    const username = localStorage.getItem("username");
 
+    // Check if the input values are not empty
+    if (title && date && username) {
+        // Create a reference to the Firebase Realtime Database
+        const databaseRef = firebase.database().ref();
 
+        // Create a new entry in the database for the user
+        var userData = {
+            title: title,
+            date: date
+        };
 
+        // Push the user data to the database
+        databaseRef.child("user").child(username).child("planner").push(userData, function(error) {
+            if (error) {
+                // The write failed...
+                console.error("Data could not be saved." + error);
+            } else {
+                var anzeigeDiv = document.getElementById("anzeige");
+                anzeigeDiv.innerHTML = ""; // Clear the div
+                // Data saved successfully!
+                console.log("Data saved successfully!");
 
+                // Get the task ID
+                var taskId = this.key;
 
+                // Add the task to the display
+                addTaskToDisplay(userData, taskId);
+
+                // Clear the input fields
+                titleInput.value = '';
+                dateInput.value = '';
+                location.reload();
+            }
+        });
+    } else {
+        console.error("Title, date or username is missing.");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const username = localStorage.getItem("username");
+    const databaseRef = firebase.database().ref();
+    databaseRef.child("user").child(username).child("planner").once("value", function(snapshot) {
+        var anzeigeDiv = document.getElementById("anzeige");
+        anzeigeDiv.innerHTML = ""; // Clear the div
+
+        if (snapshot.exists()) {
+            // The data exists
+            var tasks = snapshot.val();
+            // tasks is now an object with all tasks
+
+            // Convert the tasks object to an array
+            var tasksArray = Object.values(tasks);
+
+            // Sort the tasks array by date
+            tasksArray.sort(function(a, b) {
+                return new Date(a.date) - new Date(b.date);
+            });
+
+            // Add each task to the display
+            Object.keys(tasks).forEach(function(taskId) {
+                addTaskToDisplay(tasks[taskId], taskId);
+            });
+        } else {
+            // There is no data
+            anzeigeDiv.innerHTML = "<p>Looks like you don't lead a stressful life! 😅</p>";
+        }
+    });
+});
