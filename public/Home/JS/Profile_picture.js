@@ -9,6 +9,6 @@ if (localStorage.getItem("profilePicture")) {
             document.getElementById("profile_picture").src = profilePicture;
       } else {
             // Replace the image source with the default profile picture
-            document.getElementById("profile_picture").src = "/public/Pictures/icon-256x256.png";
+            document.getElementById("profile_picture").src = "/Pictures/icon-256x256.png";
       }
 }

@@ -1,7 +1,7 @@
 // Add event listener to the Planner div
 document.getElementById("Home").addEventListener("click", function() {
       // Redirect to another page
-      window.location.href = "/public/Home/index.html"; // Replace "https://example.com/planner" with the desired URL
+      window.location.href = "/Home/index.html"; // Replace "https://example.com/planner" with the desired URL
 });
 
 // Add event listener to the logout div

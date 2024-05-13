@@ -47,7 +47,7 @@ inputBox.addEventListener("keyup", function(event) {
             const searchText = inputBox.value;
 
             // Redirect to the corresponding subject page
-            window.location.href = `./Subjects/${searchText}.html`;
+            window.location.href = `/Home/Subjects/${searchText}.html`;
       }
 });
 
@@ -59,6 +59,6 @@ resultBox.addEventListener("click", function(event) {
             const selectedSubject = event.target.textContent;
 
             // Redirect to the corresponding subject page
-            window.location.href = `/public/Home/Subjects/${selectedSubject}.html`;
+            window.location.href = `/Home/Subjects/${selectedSubject}.html`;
       }
 });

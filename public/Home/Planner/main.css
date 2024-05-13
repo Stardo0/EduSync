@@ -214,3 +214,103 @@ body {
 ul {
       padding-left: 4vh;
 }
+
+.container .planner {
+      padding-top: 15vh;
+      padding-left: 10vh;
+      display: flex;
+      flex-direction: column;
+      gap: 5vh;
+}
+
+.container .planner .title {
+      font-family: Roboto;
+      font-size: 4vh;
+      font-weight: 500;
+}
+
+.container .planner .cloning {
+      font-family: Roboto;
+      display: flex;
+      gap: 1vh;
+      background-color: #2F27CE;
+      color: white;
+      padding: 1.5vh 4vh;
+      border-radius: 5vh;
+      width: auto;
+      margin-right: auto;
+      font-weight: 300;
+      font-size: 2.5vh;
+      cursor: pointer;
+}
+
+.container .planner .inner-part {
+      border-radius: 3vh;
+      width: 93%;
+      height: auto;
+      padding: 6vh 3vh;
+      box-shadow: 0 0vh 1vh 0.1vh rgba(0, 0, 0, 0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2vh;
+}
+
+
+.container .planner .inner-part .input {
+      display: flex;
+      gap: 30vh;
+      border: #CBCBCB 0.3vh solid;
+      padding: 3vh;
+      border-radius: 30vh;
+      font-family: Roboto;
+      font-size: 3vh;
+      color: #9E9E9E;
+}
+
+
+
+
+.container .planner .inner-part .input input {
+      border: 0px solid;
+      background-color: transparent;
+      font-family: Roboto;
+      font-size: 2.7vh;
+}
+
+.container .planner .inner-part #title {
+      border: 0px solid;
+      background-color: transparent;
+      font-family: Roboto;
+      font-size: 2.7vh;
+      width: 90vh;
+}
+
+
+.container .planner .inner-part .input input:focus {
+      border: 0px solid;
+      background-color: transparent;
+      font-family: Roboto;
+      font-size: 2.7vh;
+      outline: none;
+}
+
+.container .planner .inner-part .input input:hover {
+      border: 0px solid;
+      background-color: transparent;
+      font-family: Roboto;
+      font-size: 2.7vh;
+      outline: none;
+}
+
+.container .planner .inner-part .chekbox {
+      background-color: #F1F1F1;
+      border-radius: 50vh;
+      padding: 1.7vh;
+      cursor: pointer;
+}
+
+.container .planner .inner-part .chekbox img {
+      width: 7vh;
+      height: 7vh;
+}
