@@ -30,21 +30,26 @@ var checkbox = document.querySelector('.chekbox');
 
 // Function to add a task to the display
 function addTaskToDisplay(task, taskId) {
-    var anzeigeDiv = document.getElementById("anzeige");
-    anzeigeDiv.innerHTML += `
-        <div class="element">
-            <div class="task" id="${taskId}">
-                <input type="text" class="what" id="title" placeholder="${task.title}" readonly>
-                <input type="date" class="date" id="${taskId}" value="${task.date}">
-            </div>
-            <div class="chekbox">
-                <img src="../../Pictures/charm_tick.svg" id="checkbox-id-${taskId}">
-            </div>
-        </div>
-    `;
+      var anzeigeDiv = document.getElementById("anzeige");
+      anzeigeDiv.insertAdjacentHTML('beforeend', `
+          <div class="element">
+              <div class="task" id="${taskId}">
+                  <input type="text" class="what" id="title" placeholder="${task.title}" readonly>
+                  <input type="date" class="date" id="date-${taskId}" value="${task.date}">
+              </div>
+              <div class="chekbox">
+                  <img src="../../Pictures/charm_tick.svg" id="checkbox-id-${taskId}">
+              </div>
+          </div>
+      `);
+  
+      // Add event listeners after the element is created
+      addEventListeners(taskId);
+  }
 
+function addEventListeners(taskId) {
     // Add a change event listener to the date input field
-    document.getElementById(taskId).addEventListener('change', function() {
+    document.getElementById("date-" + taskId).addEventListener('change', function() {
         // Get the new date
         var newDate = this.value;
 
@@ -101,7 +106,7 @@ checkbox.addEventListener('click', function() {
                 // Clear the input fields
                 titleInput.value = '';
                 dateInput.value = '';
-                location.reload();
+                location.reload()
             }
         });
     } else {
@@ -130,8 +135,9 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             // Add each task to the display
-            Object.keys(tasks).forEach(function(taskId) {
-                addTaskToDisplay(tasks[taskId], taskId);
+            tasksArray.forEach(function(task) {
+                var taskId = Object.keys(tasks).find(key => tasks[key] === task);
+                addTaskToDisplay(task, taskId);
             });
         } else {
             // There is no data
