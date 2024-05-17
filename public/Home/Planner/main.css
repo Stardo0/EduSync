@@ -192,7 +192,7 @@ body {
       list-style: none;
       border-radius: 1vh;
       cursor: pointer;
-      padding: 1vh 39.9vh 1vh 2vh;
+      padding: 1vh 31.2vh 1vh 2vh;
       position: relative;
       left: -2vh;
 }
@@ -352,6 +352,7 @@ ul {
       font-family: Roboto;
       font-size: 2.7vh;
       outline: none;
+      color: black;
 }
 
 .planner .anzeige .element {
@@ -362,4 +363,71 @@ ul {
 .planner .anzeige p {
       font-family: Roboto;
       font-size: 2.5vh;
+}
+
+.anzeige .element .task .what::placeholder {
+      color: black;
+}
+
+@media only screen and (max-width: 920px) {
+      .container .planner .inner-part .input {
+            gap: 1vh;
+      }
+      .planner .anzeige .task {
+            gap: 1vh;
+      }
+}
+
+@media only screen and (max-width: 800px) {
+      .container .planner .inner-part #title {
+            width: 70vh;
+      }
+      .container .planner .inner-part #title {
+            width: 70vh;
+      }
+}
+
+@media only screen and (max-width: 750px) {
+      .container .planner .inner-part #title {
+            width: 60vh;
+      }
+      .container .planner .inner-part #title {
+            width: 60vh;
+      }
+}
+
+@media only screen and (max-width: 720px) {
+      .container .planner .inner-part #title {
+            width: 53vh;
+      }
+      .container .planner .inner-part #title {
+            width: 53vh;
+      }
+}
+
+@media only screen and (max-width: 700px) {
+      .container .planner .inner-part #title {
+            width: 45vh;
+      }
+      .container .planner .inner-part #title {
+            width: 45vh;
+      }
+}
+
+@media only screen and (max-width: 650px) {
+      .container .planner .inner-part #title {
+            width: 38vh;
+      }
+      .container .planner .inner-part #title {
+            width: 38vh;
+      }
+}
+
+@media only screen and (max-width: 630px) {
+      .container .planner .inner-part #title {
+            width: 30vh;
+      }
+      .container .planner .inner-part #title {
+            width: 30vh;
+      }
 }

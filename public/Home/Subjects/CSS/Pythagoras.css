@@ -264,14 +264,74 @@ ul {
 
 .container .inhalt .container .thema {
       width: 100%;
-      height: 100vh;
+      height: auto;
       display: flex;
       box-shadow: 0px 0px 1vh rgba(0, 0, 0, 0.10);
-      margin: 5vh 4vh 0vh 4vh;
+      margin: 5vh 4vh 10vh 4vh;
       border-radius: 2vh;
-      
+      display: flex;
+      justify-content: center;
+      gap: 6vh;
+      padding-top: 4vh;
+      padding-bottom: 4vh;
 }
 
 body::-webkit-scrollbar {
       display: none;
 }
+
+.thema .right_menu_bar {
+      margin: 0vh 4vh 0vh 10vh;
+      width: 40vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2vh;
+}
+
+.thema .right_menu_bar #Pythagoras {
+      border-radius: 2.5vh;
+      width: 40vh;
+      height: 40vh;
+      object-fit: cover;
+}
+
+.thema .right_menu_bar .learning_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #2F27CE;
+      color: white;
+      padding: 2vh;
+      border-radius: 2.5vh;
+      width: 90%;
+      font-family: Roboto;
+      font-size: 3vh;
+      cursor: pointer;
+}
+
+.thema .left_info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 3vh;
+}
+
+.thema .left_info .part .title {
+      font-family: Roboto;
+      font-size: 4vh;
+      font-weight: 500;
+      margin: 3vh 0vh 2vh 0vh;
+}
+
+.thema .left_info .part .text {
+      font-family: Roboto;
+      font-size: 2.5vh;
+      max-width: 170vh;
+      display: flex;
+      flex-direction: row;
+}
+
+.thema .left_info .part img {
+      width: 40vh;
+} 
