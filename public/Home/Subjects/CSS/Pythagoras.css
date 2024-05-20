@@ -327,11 +327,25 @@ body::-webkit-scrollbar {
 .thema .left_info .part .text {
       font-family: Roboto;
       font-size: 2.5vh;
-      max-width: 170vh;
-      display: flex;
-      flex-direction: row;
+      max-width: 120vh;
 }
 
 .thema .left_info .part img {
       width: 40vh;
 } 
+
+.red-text {
+      color: #FF3131;
+  }
+
+.green-text {
+      color: #7ED957;
+  }
+
+.yellow-text {
+      color: #FFDE59;
+  }
+
+.bold-text {
+      font-weight: 700;
+}

@@ -141,3 +141,178 @@ document.addEventListener("DOMContentLoaded", function() {
             }
       });
 });
+
+// Add event listener to the cloning div
+document.querySelector(".cloning .text, .cloning").addEventListener("click", function(event) {
+      // Check if the click event originated from the cloning div itself
+      if (event.target === this) {
+            // Toggle the display of the cloning-field div
+            var cloningField = document.querySelector(".cloning-field");
+            if (cloningField.style.display === "none") {
+                  cloningField.style.display = "block";
+            } else {
+                  cloningField.style.display = "none";
+            }
+      }
+});
+
+
+
+
+// Add event listener to the document to close the cloning-field div when clicking outside
+document.addEventListener("click", function(event) {
+      var cloningField = document.querySelector(".cloning-field");
+      var cloningButton = document.querySelector(".cloning");
+      if (!cloningField.contains(event.target) && event.target !== cloningButton) {
+            cloningField.style.display = "none";
+      }
+});
+
+
+
+// Generate a 4-digit code that is not already taken by any other user
+function generateUniqueCode() {
+      const databaseRef = firebase.database().ref();
+      const codeRef = databaseRef.child("codes");
+
+      return codeRef.once("value").then(snapshot => {
+            const codes = snapshot.val() || {};
+            const usedCodes = Object.values(codes);
+
+            let code;
+            do {
+                  code = Math.floor(1000 + Math.random() * 9000).toString();
+            } while (usedCodes.includes(code));
+
+            return code;
+      });
+}
+
+// Check if a code is already assigned to the user
+var email = localStorage.getItem("email").replace(/[.#$[\]]/g, "_");
+console.log("Checking for code for user: " + email); // Debugging line
+databaseRef.child("user").child(email).child("code").once("value", function(snapshot) {
+      if (!snapshot.exists()) {
+            console.log("No code found, generating a new one"); // Debugging line
+            // Generate a unique code
+            generateUniqueCode().then(code => {
+                  console.log("Generated code: " + code); // Debugging line
+                  // Save the code in the database
+                  databaseRef.child("user").child(email).child("code").set(code, function(error) {
+                        if (error) {
+                              console.error("Code could not be saved." + error);
+                        } else {
+                              // Code saved successfully!
+                              console.log("Code saved successfully!");
+                              console.log("Code: " + code);
+                              // Save the code in the local storage
+                              localStorage.setItem("code", code);
+                        }
+                  });
+            }).catch(error => {
+                  console.error("Error generating code: " + error); // Debugging line
+            });
+      } else {
+            // Code already exists
+            var code = snapshot.val();
+            console.log("Code: " + code);
+            // Save the code in the local storage
+            localStorage.setItem("code", code);
+      }
+});
+
+// Get the code from local storage
+var code = localStorage.getItem("code");
+
+// Display the code in the HTML
+var anzeigeDiv = document.getElementById("clonign-field-i");
+anzeigeDiv.insertAdjacentHTML('beforeend', `
+      <div class="code-title">Your Code :</div>
+      <div class="code">${code}</div>
+`);
+
+// Add event listener to the cloning button
+document.querySelector(".input-cloning").addEventListener("keyup", function(event) {
+      // Check if Enter key is pressed
+      if (event.keyCode === 13) {
+            // Get the input value
+            // Angenommen, Sie haben ein Input-Feld mit der ID "cloningField"
+var cloningField = document.getElementById("cloningField");
+
+            // Fügen Sie einen Event-Listener für das 'blur'-Ereignis hinzu
+            cloningField.addEventListener('blur', function() {
+            var cloningCode = cloningField.value;
+
+            // Überprüfen Sie, ob der Cloning-Code vorhanden ist
+            if (cloningCode) {
+                  // Erstellen Sie eine Referenz zur Firebase Realtime Database
+                  const databaseRef = firebase.database().ref();
+
+                  // Speichern Sie den Cloning-Code unter der E-Mail des Benutzers
+                  var email = localStorage.getItem("email").replace(/[.#$[\]]/g, "_");
+                  databaseRef.child("user").child(email).child("cloningCode").set(cloningCode, function(error) {
+                        if (error) {
+                        console.error("Cloning code could not be saved." + error);
+                        } else {
+                        // Cloning-Code wurde erfolgreich gespeichert!
+                        console.log("Cloning code saved successfully!");
+
+                        // Speichern Sie den Cloning-Code im lokalen Speicher
+                        localStorage.setItem("cloningCode", cloningCode);
+                        }
+                  });
+            } else {
+                  console.error("Cloning code is missing.");
+            }
+            });
+      }
+});
+
+// Check if a cloning code is already assigned to the user
+var email = localStorage.getItem("email").replace(/[.#$[\]]/g, "_");
+console.log("Checking for cloning code for user: " + email); // Debugging line
+databaseRef.child("user").child(email).child("cloningCode").once("value", function(snapshot) {
+      if (snapshot.exists()) {
+            var cloningCode = snapshot.val();
+            console.log("Cloning code: " + cloningCode);
+            // Save the cloning code in the local storage
+            localStorage.setItem("cloningCode", cloningCode);
+      }
+});
+
+// Get the cloning code from local storage
+var cloningCode = localStorage.getItem("cloningCode");
+
+// Set the value of the input field to the cloning code
+document.querySelector(".input-cloning").value = cloningCode;
+
+// Add event listener to the input field to save changes
+document.querySelector(".input-cloning").addEventListener("input", function() {
+      // Get the input value
+      var cloningCode = this.value.trim();
+
+      // Check if the input value is not empty
+      if (cloningCode) {
+            // Get the user's email from local storage
+            var email = localStorage.getItem("email").replace(/[.#$[\]]/g, "_");
+
+            // Create a reference to the Firebase Realtime Database
+            const databaseRef = firebase.database().ref();
+
+            // Save the cloning code under the user's email
+            databaseRef.child("user").child(email).child("cloningCode").set(cloningCode, function(error) {
+                  if (error) {
+                        console.error("Cloning code could not be saved." + error);
+                  } else {
+                        // Cloning code saved successfully!
+                        console.log("Cloning code saved successfully!");
+
+                        // Save the cloning code in the local storage
+                        localStorage.setItem("cloningCode", cloningCode);
+                  }
+            });
+      } else {
+            console.error("Cloning code is missing.");
+      }
+});
+
