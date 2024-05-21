@@ -1,3 +1,5 @@
+
+
 // Add event listener to the Planner div
 document.getElementById("Home").addEventListener("click", function() {
       // Redirect to another page
@@ -61,6 +63,10 @@ function addEventListeners(taskId) {
             const databaseRef = firebase.database().ref();
             databaseRef.child("user").child(email).child("planner").child(taskId).remove();
             document.getElementById(taskId).parentNode.remove();
+
+            // Store the deleted task ID in Firebase
+            databaseRef.child("user").child(email).child("deletedTasks").push(taskId);
+            updateTaskDisplay();
       });
 }
 
@@ -135,40 +141,62 @@ document.addEventListener("DOMContentLoaded", function() {
                         var taskId = Object.keys(tasks).find(key => tasks[key] === task);
                         addTaskToDisplay(task, taskId);
                   });
-            } else {
+            } else  {
                   // There is no data
                   anzeigeDiv.innerHTML = "<p>Looks like you don't lead a stressful life! 😅</p>";
             }
       });
 });
 
-// Add event listener to the cloning div
-document.querySelector(".cloning .text, .cloning").addEventListener("click", function(event) {
-      // Check if the click event originated from the cloning div itself
-      if (event.target === this) {
-            // Toggle the display of the cloning-field div
-            var cloningField = document.querySelector(".cloning-field");
-            if (cloningField.style.display === "none") {
-                  cloningField.style.display = "block";
-            } else {
-                  cloningField.style.display = "none";
+document.addEventListener("DOMContentLoaded", function() {
+    // Variable to track the menu status
+    var isMenuOpen = false;
+
+    // Ensure that the cloning-field div is hidden when the page loads
+    var cloningField = document.querySelector(".cloning-field");
+    if (cloningField) {
+        cloningField.style.display = "none";
+    }
+
+    // Add event listener to the cloning div
+    var cloningDiv = document.querySelector(".cloning .text, .cloning");
+    if (cloningDiv) {
+        cloningDiv.addEventListener("click", function(event) {
+            // Check if the click event originated from the cloning div itself
+            if (event.target === this) {
+                // Toggle the display of the cloning-field div
+                var cloningField = document.querySelector(".cloning-field");
+                if (cloningField && cloningField.style.display !== "block") {
+                    cloningField.style.display = "block";
+                    isMenuOpen = true;
+                } else {
+                    cloningField.style.display = "none";
+                    if (isMenuOpen) {
+                        // Reload the page
+                        location.reload();
+                    }
+                }
             }
-      }
+        });
+    }
+
+    // Add event listener to the document to close the cloning-field div when clicking outside
+    document.addEventListener("click", function(event) {
+        var cloningField = document.querySelector(".input-cloning");
+        var cloningButton = document.querySelector(".cloning");
+        if (cloningField && !cloningField.contains(event.target) && event.target !== cloningButton) {
+            // Check if the cloning menu is visible
+            var displayStyle = window.getComputedStyle(cloningField).display;
+            if (displayStyle !== "none") {
+                cloningField.style.display = "none";
+                if (isMenuOpen) {
+                    // Reload the page
+                    location.reload();
+                }
+            }
+        }
+    });
 });
-
-
-
-
-// Add event listener to the document to close the cloning-field div when clicking outside
-document.addEventListener("click", function(event) {
-      var cloningField = document.querySelector(".cloning-field");
-      var cloningButton = document.querySelector(".cloning");
-      if (!cloningField.contains(event.target) && event.target !== cloningButton) {
-            cloningField.style.display = "none";
-      }
-});
-
-
 
 // Generate a 4-digit code that is not already taken by any other user
 function generateUniqueCode() {
@@ -309,10 +337,146 @@ document.querySelector(".input-cloning").addEventListener("input", function() {
 
                         // Save the cloning code in the local storage
                         localStorage.setItem("cloningCode", cloningCode);
+                        seartchCloningPerson();
                   }
             });
       } else {
             console.error("Cloning code is missing.");
       }
 });
+
+
+
+
+function seartchCloningPerson() {
+            // Get the cloning code from local storage
+      var cloningCode = localStorage.getItem("cloningCode");
+
+      // Search for the cloning code in the database
+      databaseRef.child("user").orderByChild("code").equalTo(cloningCode).once("value", function(snapshot) {
+            if (snapshot.exists()) {
+                  // The cloning code is found
+                  snapshot.forEach(function(childSnapshot) {
+                        // Get the user's email
+                        var email = childSnapshot.key;
+                        console.log("Email: " + email);
+                        let clonedpersonsEmail = email;
+                        localStorage.setItem("clonedpersonsEmail", clonedpersonsEmail);
+                  });
+            } else {
+                  // The cloning code is not found
+                  console.log("No user found with the cloning code.");
+                  localStorage.removeItem("clonedpersonsEmail");
+            }
+      });
+}
+
+
+
+seartchCloningPerson();
+
+// Get the cloned person's email from local storage
+let clonedpersonsEmail = localStorage.getItem("clonedpersonsEmail");
+// Get the tasks for the cloned person
+databaseRef.child("user").child(clonedpersonsEmail).child("planner").once("value", function(snapshot) {
+      if (snapshot.exists()) {
+            // Loop through each task
+            snapshot.forEach(function(childSnapshot) {
+                  // Get the task data
+                  var task = childSnapshot.val();
+                  var taskId = childSnapshot.key;
+                  
+            });
+            // Wählen Sie das p-Element aus
+            var pElement = document.querySelector('.anzeige p');
+
+            // Überprüfen Sie, ob das Element existiert
+            if (pElement) {
+            // Entfernen Sie das Element
+            pElement.remove();
+            }
+      }
+});
+
+clonePerson();
+// Function to clone a person
+function clonePerson() {
+      // Get the cloning code from local storage
+      var cloningCode = localStorage.getItem("cloningCode");
+
+      // Search for the cloning code in the database
+      databaseRef.child("user").orderByChild("code").equalTo(cloningCode).once("value", function(snapshot) {
+            if (snapshot.exists()) {
+                  // Loop through each user with the cloning code
+                  snapshot.forEach(function(childSnapshot) {
+                        // Get the cloned person's email
+                        var clonedpersonsEmail = childSnapshot.key;
+
+                        // Save the cloned person's email in local storage
+                        localStorage.setItem("clonedpersonsEmail", clonedpersonsEmail);
+
+                        // Get the tasks for the cloned person
+                        databaseRef.child("user").child(clonedpersonsEmail).child("planner").once("value", function(snapshot) {
+                              if (snapshot.exists()) {
+                                    // Loop through each task
+                                    snapshot.forEach(function(childSnapshot) {
+                                          // Get the task data
+                                          var taskId = childSnapshot.key;
+                                          var task = childSnapshot.val();
+
+                                          // Add the task to the display
+                                          addTaskToDisplay(task, taskId);
+                                    });
+
+                                    // Select the p element
+                                    var pElement = document.querySelector('.anzeige p');
+
+                                    // Check if the element exists
+                                    if (pElement) {
+                                          // Hide the p element
+                                          pElement.style.display = "none";
+                                    }
+                              } else {
+                                    var pElement = document.querySelector('.anzeige');
+                                    pElement.style.display = "<p>Looks like you don't lead a stressful life! 😅</p>";
+                              }
+                        });
+                  });
+            }
+      });
+      
+}
+
+
+// Retrieve the deleted tasks for the user
+databaseRef.child("user").child(email).child("deletedTasks").once('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            const email = localStorage.getItem("email").replace(/[.#$[\]]/g, "_");
+            // Remove the task from the "planner" node
+            databaseRef.child("user").child(email).child("planner").child(childData).remove();
+
+            // Remove the task element from the DOM if it exists
+            var taskElement = document.getElementById(childData);
+            if (taskElement) {
+                  taskElement.parentNode.remove();
+                  updateTaskDisplay();
+            }
+      });
+});
+
+
+function updateTaskDisplay() {
+      var anzeigeDiv = document.querySelector(".anzeige");
+      if (anzeigeDiv.children.length === 0) {
+        anzeigeDiv.innerHTML = "<p>Looks like you don't lead a stressful life! 😅</p>";
+      }
+    }
+
+
+
+
+
+
 
