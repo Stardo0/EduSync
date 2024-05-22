@@ -336,7 +336,6 @@ ul {
       font-family: Roboto;
       font-size: 2.7vh;
       width: 90vh;
-      color: red;
 }
 
 .planner .anzeige .task input:focus {
@@ -370,7 +369,7 @@ ul {
       color: black;
 }
 
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 1120px) {
       .container .planner .inner-part .input {
             gap: 1vh;
       }
@@ -379,7 +378,16 @@ ul {
       }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
+      .container .planner .inner-part #title {
+            width: 72vh;
+      }
+      .container .planner .inner-part #title {
+            width: 72vh;
+      }
+}
+
+@media only screen and (max-width: 1100px) {
       .container .planner .inner-part #title {
             width: 70vh;
       }
@@ -388,7 +396,16 @@ ul {
       }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1000px) {
+      .container .planner .inner-part #title {
+            width: 68vh;
+      }
+      .container .planner .inner-part #title {
+            width: 68vh;
+      }
+}
+
+@media only screen and (max-width: 950px) {
       .container .planner .inner-part #title {
             width: 60vh;
       }
@@ -397,7 +414,7 @@ ul {
       }
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 920px) {
       .container .planner .inner-part #title {
             width: 53vh;
       }
@@ -406,7 +423,7 @@ ul {
       }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
       .container .planner .inner-part #title {
             width: 45vh;
       }
@@ -415,7 +432,16 @@ ul {
       }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 900px) {
+      .container .planner .inner-part #title {
+            width: 41vh;
+      }
+      .container .planner .inner-part #title {
+            width: 41vh;
+      }
+}
+
+@media only screen and (max-width: 850px) {
       .container .planner .inner-part #title {
             width: 38vh;
       }
@@ -424,7 +450,7 @@ ul {
       }
 }
 
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 830px) {
       .container .planner .inner-part #title {
             width: 30vh;
       }
@@ -484,4 +510,9 @@ ul {
             100% {
               transform: translateX-(5px);
             }
+          }
+
+
+          .expired {
+            color: red;
           }
