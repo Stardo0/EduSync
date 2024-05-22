@@ -336,6 +336,7 @@ ul {
       font-family: Roboto;
       font-size: 2.7vh;
       width: 90vh;
+      color: red;
 }
 
 .planner .anzeige .task input:focus {
