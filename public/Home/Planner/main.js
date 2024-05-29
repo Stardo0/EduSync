@@ -149,53 +149,36 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Variable to track the menu status
-    var isMenuOpen = false;
-
-    // Ensure that the cloning-field div is hidden when the page loads
-    var cloningField = document.querySelector(".cloning-field");
-    if (cloningField) {
-        cloningField.style.display = "none";
-    }
-
-    // Add event listener to the cloning div
-    var cloningDiv = document.querySelector(".cloning .text, .cloning");
-    if (cloningDiv) {
-        cloningDiv.addEventListener("click", function(event) {
-            // Check if the click event originated from the cloning div itself
-            if (event.target === this) {
-                // Toggle the display of the cloning-field div
-                var cloningField = document.querySelector(".cloning-field");
-                if (cloningField && cloningField.style.display !== "block") {
-                    cloningField.style.display = "block";
-                    isMenuOpen = true;
-                } else {
-                    cloningField.style.display = "none";
-                    if (isMenuOpen) {
-                        // Reload the page
-                        location.reload();
-                    }
-                }
+      var isMenuOpen = false;
+      var cloningField = document.querySelector(".cloning-field");
+      if (cloningField) {
+            cloningField.style.display = "none";
+      }
+      var cloningDiv = document.querySelector(".cloning .text, .cloning");
+      if (cloningDiv) {
+            cloningDiv.addEventListener("click", function(event) {
+                  if (event.target === this) {
+                        var cloningField = document.querySelector(".cloning-field");
+                        if (cloningField) {
+                              cloningField.style.display = cloningField.style.display === "block" ? "none" : "block";
+                              isMenuOpen = true;
+                        }
+                  }
+            });
+      }
+      document.addEventListener("click", function(event) {
+            var cloningField = document.querySelector(".cloning-field");
+            var cloningButton = document.querySelector(".cloning");
+            if (cloningField && !cloningField.contains(event.target) && event.target !== cloningButton) {
+                  var displayStyle = window.getComputedStyle(cloningField).display;
+                  if (displayStyle !== "none") {
+                        if (isMenuOpen) {
+                              cloningField.style.display = "none";
+                              clonePerson();
+                        }
+                  }
             }
-        });
-    }
-
-    // Add event listener to the document to close the cloning-field div when clicking outside
-    document.addEventListener("click", function(event) {
-        var cloningField = document.querySelector(".input-cloning");
-        var cloningButton = document.querySelector(".cloning");
-        if (cloningField && !cloningField.contains(event.target) && event.target !== cloningButton) {
-            // Check if the cloning menu is visible
-            var displayStyle = window.getComputedStyle(cloningField).display;
-            if (displayStyle !== "none") {
-                cloningField.style.display = "none";
-                if (isMenuOpen) {
-                    // Reload the page
-                    location.reload();
-                }
-            }
-        }
-    });
+      });
 });
 
 // Generate a 4-digit code that is not already taken by any other user
@@ -215,6 +198,8 @@ function generateUniqueCode() {
             return code;
       });
 }
+
+
 
 // Check if a code is already assigned to the user
 var email = localStorage.getItem("email").replace(/[.#$[\]]/g, "_");
@@ -375,12 +360,11 @@ function seartchCloningPerson() {
 
 seartchCloningPerson();
 
-// Get the cloned person's email from local storage
 let clonedpersonsEmail = localStorage.getItem("clonedpersonsEmail");
-// Get the tasks for the cloned person
-databaseRef.child("user").child(clonedpersonsEmail).child("planner").once("value", function(snapshot) {
-      if (snapshot.exists()) {
-            // Loop through each task
+
+if (clonedpersonsEmail && clonedpersonsEmail !== "") {
+    databaseRef.child("user").child(clonedpersonsEmail).child("planner").once("value", function(snapshot) {
+        // rest of your code
             snapshot.forEach(function(childSnapshot) {
                   // Get the task data
                   var task = childSnapshot.val();
@@ -395,8 +379,8 @@ databaseRef.child("user").child(clonedpersonsEmail).child("planner").once("value
             // Entfernen Sie das Element
             pElement.remove();
             }
-      }
-});
+      });
+}
 
 clonePerson();
 // Function to clone a person
@@ -472,11 +456,5 @@ function updateTaskDisplay() {
       if (anzeigeDiv.children.length === 0) {
         anzeigeDiv.innerHTML = "<p>Looks like you don't lead a stressful life! 😅</p>";
       }
-    }
-
-
-
-
-
-
+}
 

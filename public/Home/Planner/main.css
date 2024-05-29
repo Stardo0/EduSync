@@ -290,7 +290,6 @@ ul {
       background-color: transparent;
       font-family: Roboto;
       font-size: 2.7vh;
-      width: 90vh;
 }
 
 
@@ -335,7 +334,6 @@ ul {
       background-color: transparent;
       font-family: Roboto;
       font-size: 2.7vh;
-      width: 90vh;
 }
 
 .planner .anzeige .task input:focus {
@@ -369,95 +367,9 @@ ul {
       color: black;
 }
 
-@media only screen and (max-width: 1120px) {
-      .container .planner .inner-part .input {
-            gap: 1vh;
-      }
-      .planner .anzeige .task {
-            gap: 1vh;
-      }
-}
 
-@media only screen and (max-width: 1200px) {
-      .container .planner .inner-part #title {
-            width: 72vh;
-      }
-      .container .planner .inner-part #title {
-            width: 72vh;
-      }
-}
 
-@media only screen and (max-width: 1100px) {
-      .container .planner .inner-part #title {
-            width: 70vh;
-      }
-      .container .planner .inner-part #title {
-            width: 70vh;
-      }
-}
 
-@media only screen and (max-width: 1000px) {
-      .container .planner .inner-part #title {
-            width: 68vh;
-      }
-      .container .planner .inner-part #title {
-            width: 68vh;
-      }
-}
-
-@media only screen and (max-width: 950px) {
-      .container .planner .inner-part #title {
-            width: 60vh;
-      }
-      .container .planner .inner-part #title {
-            width: 60vh;
-      }
-}
-
-@media only screen and (max-width: 920px) {
-      .container .planner .inner-part #title {
-            width: 53vh;
-      }
-      .container .planner .inner-part #title {
-            width: 53vh;
-      }
-}
-
-@media only screen and (max-width: 900px) {
-      .container .planner .inner-part #title {
-            width: 45vh;
-      }
-      .container .planner .inner-part #title {
-            width: 45vh;
-      }
-}
-
-@media only screen and (max-width: 900px) {
-      .container .planner .inner-part #title {
-            width: 41vh;
-      }
-      .container .planner .inner-part #title {
-            width: 41vh;
-      }
-}
-
-@media only screen and (max-width: 850px) {
-      .container .planner .inner-part #title {
-            width: 38vh;
-      }
-      .container .planner .inner-part #title {
-            width: 38vh;
-      }
-}
-
-@media only screen and (max-width: 830px) {
-      .container .planner .inner-part #title {
-            width: 30vh;
-      }
-      .container .planner .inner-part #title {
-            width: 30vh;
-      }
-}
 
 
       .cloning-field {
@@ -516,3 +428,14 @@ ul {
           .expired {
             color: red;
           }
+
+
+      .planner .anzeige .task {
+            gap: 0vh;
+      }
+          
+      .container .planner .inner-part .input {
+            gap: 0vh;
+      }
+      
+      

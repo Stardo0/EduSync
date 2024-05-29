@@ -1,11 +1,20 @@
 // Auto Complete
+let Subjects = [];
 
-let Subjects = [
-      'Python',
-      'Variables',
-      'Pythagoras'
-];
 
+databaseRef.child("subjects").once("value", function(snapshot) {
+      console.log(Subjects);
+      if (snapshot.exists()) {
+            // Loop through each task
+            snapshot.forEach(function(childSnapshot) {
+                  // Get the task data
+                  Subjects.push(childSnapshot.key);
+                  console.log(Subjects);
+            });
+      }
+});
+
+console.log(Subjects);
 const resultBox = document.querySelector(".result-box");
 const inputBox = document.getElementById("searchbar");
 
@@ -13,13 +22,13 @@ inputBox.onkeyup = function(){
       let result = [];
       let input = inputBox.value;
       if(input.length){
-            result = Subjects.filter((keyword) => {
-                  return keyword.toLowerCase().includes(input.toLowerCase());
-            });
-      console.log(result);
-      display(result);
+          result = Subjects.filter((keyword) => {
+              return typeof keyword === 'string' && keyword.toLowerCase().includes(input.toLowerCase());
+          });
+          console.log(result);
+          display(result);
       }
-}
+  }
 
 function display(result){
       const content = result.map((list) => {
@@ -45,9 +54,9 @@ inputBox.addEventListener("keyup", function(event) {
       if (event.key === "Enter") {
             // Get the value from the input box
             const searchText = inputBox.value;
-
+            localStorage.setItem("selectedSubject", selectedSubject);
             // Redirect to the corresponding subject page
-            window.location.href = `/Home/Subjects/${searchText}.html`;
+            window.location.href = `/Home/Subjects/Preset/Preset.html`;
       }
 });
 
@@ -57,8 +66,9 @@ resultBox.addEventListener("click", function(event) {
       if (event.target.tagName === "LI") {
             // Get the selected subject from the clicked <li> element
             const selectedSubject = event.target.textContent;
-
+            // Save the selected subject to local storage
+            localStorage.setItem("selectedSubject", selectedSubject);
             // Redirect to the corresponding subject page
-            window.location.href = `/Home/Subjects/${selectedSubject}.html`;
+            window.location.href = `/Home/Subjects/Preset/Preset.html`;
       }
 });

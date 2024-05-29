@@ -4,14 +4,14 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>EduSync</title>
-      <link rel="stylesheet" href="./CSS/Pythagoras.css">
+      <link rel="stylesheet" href="./Preset.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
       <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
-      <link rel="icon" href="../../Pictures/Logo.png">
+      <link rel="icon" href="../../../Pictures/Logo.png">
 </head>
 <body>
       <script>
@@ -33,11 +33,11 @@
                   <div class="title">EduSync</div>
                   <div class="buttons">
                         <div class="menu_buttons" id="Home">
-                              <img src="../../Pictures/home-blue.svg">
+                              <img src="../../../Pictures/home-blue.svg">
                               <div class="text">Home</div>
                         </div>
                         <div class="menu_buttons" id="Planner">
-                              <img src="../../Pictures/calendar-gray.svg">
+                              <img src="../../../Pictures/calendar-gray.svg">
                               <div class="text">Planner</div>
                         </div>
 
@@ -45,7 +45,7 @@
             </div>
             <div class="bottom">
                   <div class="user">
-                        <img src="../../Pictures/icon-256x256.png" id="profile_picture">
+                        <img src="../../../Pictures/icon-256x256.png" id="profile_picture">
                         <div class="text">
                               <div class="name">[Name]</div>
                               <div class="email">[Email]</div>
@@ -53,11 +53,11 @@
                   </div>
                   <div class="buttons">
                         <div class="button" id="Settigns">
-                              <img src="../../Pictures/settings.svg">
+                              <img src="../../../Pictures/settings.svg">
                               Settigns
                         </div>
                         <div class="button" id="Logout">
-                              <img src="../../Pictures/log-out.svg">
+                              <img src="../../../Pictures/log-out.svg">
                               Logout
                         </div>
                   </div>
@@ -67,7 +67,7 @@
             <div class="top-bar">
                   <div class="row">
                         <div class="search-bar">
-                              <img src="../../Pictures/search.svg">
+                              <img src="../../../Pictures/search.svg">
                               <input type="text" placeholder="Pythagoras" id="searchbar" autocomplete="off">
                         </div>
                         <div class="result-box">
@@ -77,43 +77,22 @@
             </div>
             <div class="inhalt">
                   <div class="back-button" onclick="history.back()">
-                        <img src="../../Pictures/back-icon.svg">
+                        <img src="../../../Pictures/back-icon.svg">
                         <div class="text">Back</div>
                   </div>
-                  <div class="title">Pythagoras</div>
+                  <div class="title" id="Titel-Preset">[Titel]</div>
                   <div class="container">
                         <div class="thema">
-                              <div class="left_info">
-                                    <div class="part">
-                                          <div class="title">Why you need it :</div>
-                                          <p class="text">The Pythagorean theorem is used to calculate the diagonal side of the triangle. In the real world, it is used to calculate a screen size is and more.</p>
-                                          <img src="../../Pictures/Pc_montior.svg" alt="">
-                                    </div>
-                                    <div class="part">
-                                          <div class="title">What it is and how to use it :</div>
-                                          <div class="text">Four the Pythagorean theorem <span class="dark-yellow-text">⚠</span> you need a right angle <span class="dark-yellow-text">⚠</span>. </div>
-                                          <img src="../../Pictures/Rechter Winkel.svg">
-                                          <div class="text">The Pythagorean theorem is <span class="green-text">a²</span> + <span class="yellow-text">b²</span> = <span class="red-text">c²</span>. It is ² ,because it represents the square. It's because <span class="green-text">a²</span> is just <span class="green-text">a</span> · <span class="green-text">a</span> and <span class="green-text">a</span> represents one side of the square <span class="green-text">a²</span>.</div>
-                                          <img src="../../Pictures/Phytaguras_Squares.svg" alt="">
-                                          <div class="text">So now, if you calculate <span class="green-text">a²</span> + <span class="yellow-text">b²</span> = <span class="red-text">c²</span> we only know the area of the square, not the length of one side. Therefore, we use the square root √<span class="red-text">c²</span> . This gives us the length of the side <span class="bold-text">c</span> 🙂</div>
-                                    </div>
-                              
-
-                              </div>
-                              <div class="right_menu_bar">
-                                    <img src="../../Pictures/Phytaguras.jpg" id="Pythagoras">
-                                    <div class="learning_button">Start Learning</div>
-                              </div>
                               
                         </div>
                   </div>
             </div>
             
       </div>
-      <script src="../JS/auto_complete.js"></script>
-      <script src="../JS/Profile_picture.js"></script>
-      <script src="../JS/username.js"></script>
-      <script src="../main.js"></script>
-      <script src="../JS/colored_text.js"></script>
+      <script src="../../JS/auto_complete.js"></script>
+      <script src="../../JS/Profile_picture.js"></script>
+      <script src="../../JS/username.js"></script>
+      <script src="../../main.js"></script>
+      <script src="./main.js"></script>
 </body>
 </html>
