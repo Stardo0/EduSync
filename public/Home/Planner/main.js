@@ -2,8 +2,7 @@
 
 // Add event listener to the Planner div
 document.getElementById("Home").addEventListener("click", function() {
-      // Redirect to another page
-      window.location.href = "/Home/index.html"; // Replace "https://example.com/planner" with the desired URL
+      window.location.href = "/Login%20and%20Register/Login.html";
 });
 
 // Add event listener to the logout div
@@ -18,7 +17,7 @@ document.getElementById("Logout").addEventListener("click", function() {
       localStorage.removeItem("profilePicture");
 
       // Redirect to another page
-      window.location.href = "../../Login%20and%20Register/Login.html"; // Replace "https://example.com" with the desired URL
+      window.location.href = "/Login%20and%20Register/Login.html"; // Replace "https://example.com" with the desired URL
 });
 
 // Get references to the input elements and the checkbox
@@ -148,39 +147,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-      var isMenuOpen = false;
-      var cloningField = document.querySelector(".cloning-field");
-      if (cloningField) {
-            cloningField.style.display = "none";
-      }
-      var cloningDiv = document.querySelector(".cloning .text, .cloning");
-      if (cloningDiv) {
-            cloningDiv.addEventListener("click", function(event) {
-                  if (event.target === this) {
-                        var cloningField = document.querySelector(".cloning-field");
-                        if (cloningField) {
-                              cloningField.style.display = cloningField.style.display === "block" ? "none" : "block";
-                              isMenuOpen = true;
-                        }
-                  }
-            });
-      }
-      document.addEventListener("click", function(event) {
-            var cloningField = document.querySelector(".cloning-field");
-            var cloningButton = document.querySelector(".cloning");
-            if (cloningField && !cloningField.contains(event.target) && event.target !== cloningButton) {
-                  var displayStyle = window.getComputedStyle(cloningField).display;
-                  if (displayStyle !== "none") {
-                        if (isMenuOpen) {
-                              cloningField.style.display = "none";
-                              clonePerson();
-                        }
-                  }
-            }
-      });
-});
-
 // Generate a 4-digit code that is not already taken by any other user
 function generateUniqueCode() {
       const databaseRef = firebase.database().ref();
@@ -234,15 +200,6 @@ databaseRef.child("user").child(email).child("code").once("value", function(snap
       }
 });
 
-// Get the code from local storage
-var code = localStorage.getItem("code");
-
-// Display the code in the HTML
-var anzeigeDiv = document.getElementById("clonign-field-i");
-anzeigeDiv.insertAdjacentHTML('beforeend', `
-      <div class="code-title">Your Code :</div>
-      <div class="code">${code}</div>
-`);
 
 // Add event listener to the cloning button
 document.querySelector(".input-cloning").addEventListener("keyup", function(event) {
@@ -458,3 +415,44 @@ function updateTaskDisplay() {
       }
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+      var isMenuOpen = false;
+      var cloningField = document.querySelector(".cloning-field");
+      if (cloningField) {
+            cloningField.style.display = "none";
+      }
+      var cloningDiv = document.querySelector(".cloning .text, .cloning");
+      if (cloningDiv) {
+            cloningDiv.addEventListener("click", function(event) {
+                  if (event.target === this) {
+                        var cloningField = document.querySelector(".cloning-field");
+                        if (cloningField) {
+                              cloningField.style.display = cloningField.style.display === "block" ? "none" : "block";
+                              isMenuOpen = true;
+                        }
+                  }
+            });
+      }
+      document.addEventListener("click", function(event) {
+            var cloningField = document.querySelector(".cloning-field");
+            var cloningButton = document.querySelector(".cloning");
+            if (cloningField && !cloningField.contains(event.target) && event.target !== cloningButton) {
+                  var displayStyle = window.getComputedStyle(cloningField).display;
+                  if (displayStyle !== "none") {
+                        if (isMenuOpen) {
+                              cloningField.style.display = "none";
+                              clonePerson();
+                        }
+                  }
+            }
+      });
+            // Get the code from local storage
+      var code = localStorage.getItem("code");
+
+      // Display the code in the HTML
+      var anzeigeDiv = document.getElementById("clonign-field-i");
+      anzeigeDiv.insertAdjacentHTML('beforeend', `
+            <div class="code-title">Your Code :</div>
+            <div class="code">${code}</div>
+      `);
+});
