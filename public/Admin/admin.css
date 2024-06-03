@@ -1,0 +1,99 @@
+body {
+      margin: 0px;
+}
+
+.container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2vh;
+      gap: 4vh;
+      flex-direction: column;
+}
+
+.top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10vh;
+      gap: 4vh;  
+}
+
+.back-button {
+      background-color: #F9F9F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Roboto;
+      padding: 1.2vh 2vh 1.2vh 1.2vh;
+      border-radius: 2.5vh;
+      cursor: pointer;
+      font-size: 2.8vh;
+}
+
+.back-button img {
+      height: 3vh;
+      width: 3vh;
+}
+.titel {
+      font-family: Roboto;
+      font-size: 4vh;
+      font-weight: 700;
+}
+
+.subjects .title {
+      font-family: Roboto;
+      font-size: 3vh;
+      font-weight: 700;
+      margin-bottom: 1.5vh;
+}
+
+.subjects .add-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #B0CAFD;
+      padding: 7vh 15vh;
+      border-radius: 2.5vh;
+      cursor: pointer;
+}
+
+.subjects .add-button img {
+      height: 4vh;
+      width: 4vh;
+}
+
+.settings {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3vh;
+}
+
+.main-part {
+      display: flex;
+      gap: 10vh;
+}
+
+.settings .title {
+      font-family: Roboto;
+      font-size: 3vh;
+      font-weight: 700;
+}
+
+.settings {
+      display: flex;    
+      flex-direction: column;
+      gap: 3vh;
+      justify-content: flex-start;
+      align-items: flex-start;
+}
+
+.settings .button {
+      background-color: #B0CAFD;
+      font-family: Roboto;
+      padding: 1.5vh 10vh;
+      border-radius: 2.5vh;
+      cursor: pointer;
+      font-size: 2.5vh;
+}

@@ -252,3 +252,7 @@ body {
 ul {
       padding-left: 4vh;
 }
+
+#AdminButton {
+      display: none;
+}

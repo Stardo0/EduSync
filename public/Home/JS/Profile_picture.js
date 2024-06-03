@@ -3,12 +3,14 @@ if (localStorage.getItem("profilePicture")) {
       // Get the profile picture from the local storage
       const profilePicture = localStorage.getItem("profilePicture");
 
-      // Check if the profile picture is not null and not equal to "none"
-      if (profilePicture !== null && profilePicture !== "none") {
-            // Replace the image source with the profile picture
-            document.getElementById("profile_picture").src = profilePicture;
+      // Check if Profilepicture is null in local storage
+      if (localStorage.getItem('profilePicture') == "null") {
+            // Profilepicture is null
+            console.log('Profilepicture is null');
+            document.getElementById("profile_picture").src = "http://localhost:5500/public/Pictures/icon-256x256.png";
       } else {
-            // Replace the image source with the default profile picture
-            document.getElementById("profile_picture").src = "/Pictures/icon-256x256.png";
+            // Profilepicture is not null
+            console.log('Profilepicture is not null');
+            document.getElementById("profile_picture").src = profilePicture;
       }
 }

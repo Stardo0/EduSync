@@ -19,6 +19,13 @@ document.getElementById("Logout").addEventListener("click", function() {
 
       // Redirect to another page
       window.location.href = "/Login%20and%20Register/Login.html"; // Replace "https://example.com" with the desired URL
+      firebase.auth().signOut().then(() => {
+            // Sign-out successful.
+            console.log('User Logged Out!');
+          }).catch((error) => {
+            // An error happened.
+            console.log('Error: ', error);
+          });
 });
 
 

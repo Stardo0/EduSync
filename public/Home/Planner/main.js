@@ -25,7 +25,7 @@ var titleInput = document.querySelector('.field .input #title');
 var dateInput = document.querySelector('.field .input #placeholder');
 var checkbox = document.querySelector('.chekbox');
 
-// Function to add a task to the display
+
 function addTaskToDisplay(task, taskId) {
       var anzeigeDiv = document.getElementById("anzeige");
       anzeigeDiv.insertAdjacentHTML('beforeend', `
@@ -40,7 +40,6 @@ function addTaskToDisplay(task, taskId) {
             </div>
       `);
 
-      // Add event listeners after the element is created
       addEventListeners(taskId);
 }
 
@@ -456,3 +455,20 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="code">${code}</div>
       `);
 });
+
+function rezize() {
+      var screenWidth = window.innerWidth;
+
+      var desiredWidth = screenWidth / 4;
+
+      var elements = document.querySelectorAll("#title");
+
+      elements.forEach(function(element) {
+            element.style.width = desiredWidth + "px";
+      });
+
+}
+
+window.addEventListener('resize', rezize);
+
+setTimeout(rezize, 1000);

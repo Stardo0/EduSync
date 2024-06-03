@@ -123,8 +123,9 @@ body {
 }
 
 .container .intro .illustration img {
-      height: 90vh;
-      width: 90vh;
+      height: 63vh;
+      margin-top: 10vh;
+
 }
 
 .team {

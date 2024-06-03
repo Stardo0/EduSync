@@ -45,6 +45,7 @@ function loginWithGoogle() {
 
                   // Save to local storage
                   localStorage.setItem('username', username);
+                  localStorage.setItem('username-backup', username);
                   localStorage.setItem('email', email);
                   localStorage.setItem('profilePicture', profilePicture); // Save profile picture URL to local storage
 
