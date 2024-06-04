@@ -1,7 +1,6 @@
 // Auto Complete
 let Subjects = [];
 
-
 databaseRef.child("subjects").once("value", function(snapshot) {
       console.log(Subjects);
       if (snapshot.exists()) {
@@ -11,10 +10,13 @@ databaseRef.child("subjects").once("value", function(snapshot) {
                   Subjects.push(childSnapshot.key);
                   console.log(Subjects);
             });
+      } else {
+            console.log("No data available");
       }
 });
 
 console.log(Subjects);
+console.log("seartch...");
 const resultBox = document.querySelector(".result-box");
 const inputBox = document.getElementById("searchbar");
 
@@ -27,6 +29,8 @@ inputBox.onkeyup = function(){
           });
           console.log(result);
           display(result);
+      } else {
+          console.log("No data available 2");
       }
   }
 
@@ -46,6 +50,9 @@ function selectInput(list){
 document.addEventListener("click", function(event) {
       if (!event.target.matches("#searchbar")) {
             resultBox.innerHTML = '';
+      } else {
+            console.log("No data available 3");
+      
       }
 });
 
