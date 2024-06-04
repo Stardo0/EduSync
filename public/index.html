@@ -8,7 +8,6 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-      <script src="main.js"></script>
       <link rel="icon" href="./Pictures/Logo.png">
 </head>
 <body>
@@ -16,8 +15,8 @@
             <div class="title">EduSync</div>
             <div class="buttons">
                   <div class="kleine_buttons">
-                        <div class="button">Team</div>
-                        <div class="button">Features</div>
+                        <div class="button" id="team-button">Team</div>
+                        <div class="button" id="features-button">Features</div>
                   </div>
                   <a href="./Login and Register/Login.html">
                         <div class="login">Login</div>
@@ -45,7 +44,7 @@
                         <img src="./Pictures/education web.png" alt="">
                   </div>
             </div>
-            <div class="team">
+            <div class="team" id="team-link">
                   <div class="people">
                         <div class="person">
                               <img src="./Pictures/Marc.jpg">
@@ -78,11 +77,11 @@
                   </div>
                   <div class="information">
                         <div class="title">Our Team</div>
-                        <div class="subtitle">At the Academy, we strive to bring together the best professors for the best courses</div>
-                        <div class="button">Join Us</div>
+                        <div class="subtitle">At EduSync, we strive to bring together the best Team for the best grades.</div>
+                        <div class="button" id="join-us">Join Us</div>
                   </div>
             </div>
-            <div class="features">
+            <div class="features" id="features-link">
                   <div class="texts">
                         <div class="title">Features</div>
                         <div class="line"></div>
@@ -104,5 +103,23 @@
                   </div>
             </div>
       </div>
+      <script>
+            let joinUsButton = document.getElementById('join-us');
+            joinUsButton.addEventListener('click', function() {
+                  window.location.href = 'mailto:marc.blattmann08@gmail.com';
+            });
+
+            let featuresButton = document.getElementById('features-button');
+            let featuresLink = document.getElementById('features-link');
+            featuresButton.addEventListener('click', function() {
+                  featuresLink.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            let TeamButton = document.getElementById('team-button');
+            let TeamLink = document.getElementById('team-link');
+            TeamButton.addEventListener('click', function() {
+                  TeamLink.scrollIntoView({ behavior: 'smooth' });
+            });
+      </script>
 </body>
 </html>

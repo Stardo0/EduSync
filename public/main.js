@@ -33,3 +33,4 @@ firebase.auth().onAuthStateChanged(function(user) {
             // Your code here for when the user is signed out
       }
 });
+

@@ -22,7 +22,7 @@ body {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-      gap: 15vh;
+      gap: 5vh;
 }
 
 .top_bar .buttons .button {
@@ -61,6 +61,7 @@ body {
       flex-direction: row;
       align-items: center;
       justify-content: space-evenly;
+      margin-top: 11vh;
 }
 
 .container .intro .texts {
@@ -124,8 +125,6 @@ body {
 
 .container .intro .illustration img {
       height: 63vh;
-      margin-top: 10vh;
-
 }
 
 .team {
@@ -285,8 +284,7 @@ body {
 
 @media (max-width: 730px) {
       .container .intro .illustration img {
-            height: 70vh;
-            width: 70vh;
+            height: 50vh;
       }
       .container .intro {
             flex-wrap: wrap;
