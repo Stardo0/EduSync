@@ -1,0 +1,60 @@
+.container {
+      display: flex;
+      flex-direction: column;
+      gap: 3vh;
+      margin: 5vh;
+      font-family: Roboto;
+}
+
+.title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7vh;
+}
+
+.back-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F9F9F9;
+      padding: 1vh 2vh 1vh 1vh;
+      border-radius: 25vh;
+      cursor: pointer;
+      font-size: 3vh;
+}
+
+.titel-text {
+      font-size: 3.5vh;
+      font-weight: 700;
+}
+
+.add-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #B0CAFD;
+      padding: 1.5vh 3vh;
+      border-radius: 2.5vh;
+      cursor: pointer;
+}
+
+.input {
+      display: flex;
+      gap: 1vh;
+      margin: 5vh 0vh;
+      font-family: Roboto;
+      font-size: 3vh;
+      align-items: center;
+      justify-content: center;
+}
+
+.input input {
+      height: 3vh;
+      width: 50vh;
+      font-size: 3vh;
+      all: unset;
+      border: 0.1vh solid #000000;   
+      border-radius: 1vh; 
+      padding: 0.4vh;
+}
