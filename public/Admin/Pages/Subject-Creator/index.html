@@ -53,6 +53,7 @@
             <div class="add-button" id="add-button">
                         Add Subject
             </div>
+
       </div>
       <!-- Include the Quill library -->
       <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
@@ -81,9 +82,10 @@
 
                               ['clean']                                         // remove formatting button
                         ]
-                  }
+                  },
+                  vh: true
             });
       </script>
-      <script src="./main.js"></script>
+      <script src="./main.js" type="module"></script>
 </body>
 </html>

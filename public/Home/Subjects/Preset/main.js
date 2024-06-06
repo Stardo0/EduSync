@@ -39,9 +39,11 @@ if (localStorage.getItem("selectedSubject")) {
       .then(function(snapshot) {
             console.log(snapshot.val()); // Log the returned object
             const htmlContent = snapshot.val();
-            document.querySelector(".thema").innerHTML = htmlContent;
+            document.querySelector(".explainer").innerHTML = htmlContent;
       })
             .catch(function(error) {
                   console.error("Error retrieving HTML content from Firebase Realtime Database:", error);
             });
 }
+
+
