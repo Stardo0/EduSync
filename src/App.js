@@ -21,19 +21,22 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { getDatabase, ref, get } from 'firebase/database';
+
 
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD0wHJnHD5yf1lvWHvwOwHjuzqqPPqr4lY",
   authDomain: "edusync1-3af45.firebaseapp.com",
+  databaseURL: "https://edusync1-3af45-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "edusync1-3af45",
   storageBucket: "edusync1-3af45.appspot.com",
   messagingSenderId: "293958266884",
   appId: "1:293958266884:web:5e90b1f5e8bea850e80551",
   measurementId: "G-RX6R0VD61T"
 };
-
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 const auth = getAuth(app); // Correctly use getAuth with the Firebase app instance
 const db = getFirestore(app); // Correctly use getFirestore with the Firebase app instance
 const provider = new GoogleAuthProvider();
@@ -42,14 +45,38 @@ const provider = new GoogleAuthProvider();
 
 
 
-function TopBar({ setOpenPage, openPage, Name, Email, UserImg }) {
-  const autocompleteList = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-    { label: 'The Godfather: Part II', year: 1974 },
-    { label: 'The Dark Knight', year: 2008 },
-    { label: '12 Angry Men', year: 1957 }
-  ];
+function TopBar({ setOpenPage, openPage, Name, Email, UserImg, selectedOption, setSelectedOption }) {
+  const [autocompleteList, setAutocompleteList] = useState([]);
+
+  useEffect(() => {
+    get(ref(database, 'subjects'))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const list = [];
+          snapshot.forEach((childSnapshot) => {
+            const label = childSnapshot.key;
+            list.push({ label });
+          });
+          setAutocompleteList(list);
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting subjects:", error);
+      });
+  }, []);
+
+  const handleAutocompleteChange = (event, newValue) => {
+    setSelectedOption(newValue);
+  };
+
+  useEffect(() => {
+    console.log(selectedOption?.label);
+    if (selectedOption && selectedOption.label) {
+      setOpenPage("Subject");
+    }
+  }, [selectedOption]);
 
   return (
     <div className="topbar">
@@ -58,11 +85,13 @@ function TopBar({ setOpenPage, openPage, Name, Email, UserImg }) {
           disablePortal
           id="combo-box-demo"
           options={autocompleteList}
+          isOptionEqualToValue={(option, value) => option.label === value.label}
+          onChange={handleAutocompleteChange}
           hidelabel
           sx={{
             '& .MuiInputBase-root': {
               height: '33px',
-              borderRadius: '10px', // Add border radius
+              borderRadius: '10px',
             },
             '& .MuiInputBase-input': {
               padding: '0px',
@@ -78,25 +107,28 @@ function TopBar({ setOpenPage, openPage, Name, Email, UserImg }) {
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          renderInput={(params) => <TextField 
-            {...params}
-            placeholder="Search"
-            sx={{
-              marginBottom: '0.5px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            />}
+          renderInput={(params) => (
+            <TextField 
+              {...params}
+              placeholder="Search"
+              sx={{
+                marginBottom: '0.5px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            />
+          )}
         />
       </div>
     </div>
   );
 }
 
+
 //Side Bar
 
-function SideBar({ setOpenPage, openPage, Name, Email, UserImg }) {
+function SideBar({ setOpenPage, openPage, Name, Email, UserImg, setSelectedOption, selectedOption }) {
 
   return (
     <div className="SideBar">
@@ -192,12 +224,13 @@ function MainMenuElement ({title, img, openPage, setOpenPage}) {
 
 //Menu
 function Menu({openPage, setOpenPage, Name, Email, UserImg}) {
+  const [selectedOption, setSelectedOption] = useState(null);
   return (
     <>
-      <TopBar setOpenPage={setOpenPage} openPage={openPage}/>
+      <TopBar setOpenPage={setOpenPage} openPage={openPage} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
         <div className='Menu'>
-          <SideBar setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>
-          <Content setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>
+          <SideBar setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
+          <Content setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
         </div>
     </>
   );
@@ -230,11 +263,25 @@ function PlannerContent(props) {
 
 }
 
-function Content({ setOpenPage, openPage, Name, Email, UserImg }) {
+function SubjectContent({ selectedOption, setOpenPage, openPage }) {
+  if (!selectedOption || !selectedOption.label) {
+    setOpenPage("Home");
+    return null;
+  }
+
+  return (
+    <div className='SubjectContent'>
+      <h1>Subject {selectedOption.label}</h1>
+    </div>
+  );
+}
+
+function Content({ setOpenPage, openPage, Name, Email, UserImg, selectedOption }) {
   return (
     <div className='Content'>
       {openPage === 'Home' && <HomeContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>}
       {openPage === 'Planner' && <PlannerContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>}
+      {openPage === 'Subject' && <SubjectContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption}/>}
     </div>
   );
 }
@@ -335,7 +382,7 @@ function App(props) {
     });
     return () => unsubscribe();
   }, []);
-  const UserImg = '';
+  const UserImg = user ? user.photoURL : '';
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
