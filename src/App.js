@@ -9,6 +9,7 @@ import Settings from './Icons/Settings.svg';
 import UserIcon from './Imgs/User.svg';
 import Seartch from './Icons/Seartch.svg';
 import Brain from './Imgs/brain.png';
+import Back from './Icons/back.svg';
 import LoginPic from './Imgs/Schedule.svg';
 import EmailIcon from './Icons/envelope.svg';
 import PasswordIcon from './Icons/key.svg';
@@ -21,7 +22,29 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { getDatabase, ref, get } from 'firebase/database';
+import { getDatabase, ref, get, onValue } from 'firebase/database';
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+
+const MathRenderer = ({ children }) => {
+  useEffect(() => {
+    const elements = document.querySelectorAll('.math');
+
+    elements.forEach((element) => {
+      const text = element.innerText;
+      const html = katex.renderToString(text, {
+        throwOnError: false
+      });
+
+      element.innerHTML = html;
+    });
+  }, []);
+
+  return <div>{children}</div>;
+};
+
+
+
 
 
 // Firebase configuration
@@ -225,12 +248,37 @@ function MainMenuElement ({title, img, openPage, setOpenPage}) {
 //Menu
 function Menu({openPage, setOpenPage, Name, Email, UserImg}) {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [content, setContent] = useState(null);
+
+  useEffect(() => {
+    if (!selectedOption || !selectedOption.label) {
+      setOpenPage("Home");
+      setContent(null);
+    } else {
+      get(ref(database, 'subjects/' + selectedOption.label + '/content'))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            // Daten erfolgreich abgerufen
+            setContent(snapshot.val());
+          } else {
+            console.log("Keine Daten verfügbar");
+            setContent(null);
+          }
+        })
+        .catch((error) => {
+          console.error("Fehler beim Abrufen der Daten:", error);
+          setContent(null);
+        });
+    }
+  }, [selectedOption]);
+
+
   return (
     <>
       <TopBar setOpenPage={setOpenPage} openPage={openPage} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
         <div className='Menu'>
           <SideBar setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
-          <Content setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
+          <Content setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} setSelectedOption={setSelectedOption} content={content} setContent={setContent}/>
         </div>
     </>
   );
@@ -263,25 +311,40 @@ function PlannerContent(props) {
 
 }
 
-function SubjectContent({ selectedOption, setOpenPage, openPage }) {
+function SubjectContent({ selectedOption, setOpenPage, openPage, content, setContent }) {
   if (!selectedOption || !selectedOption.label) {
     setOpenPage("Home");
     return null;
   }
-
   return (
+    <>
     <div className='SubjectContent'>
-      <h1>Subject {selectedOption.label}</h1>
+      <div className='ButtonContainer'>
+        <div className='backButtom' onClick={() => setOpenPage("Home")}><img src={Back} alt="Icon" width='15px'></img>Back</div>
+      </div>
+      <div className='container'>
+        <h1 className='title'>{selectedOption.label}</h1>
+          <div className='text'>
+            {/* Zeige nur den Wert von "TEst" als HTML an, wenn content ein Objekt ist */}
+            {content && typeof content === 'object' && content.HTML ? (
+              <div dangerouslySetInnerHTML={{ __html: content.HTML }} />
+            ) : (
+              content === null ? <div>Error fetching data | Sorry 😕</div> : <pre>{JSON.stringify(content, null, 2)}</pre>
+            )}
+          </div>
+      </div>
     </div>
+    </>
   );
 }
 
-function Content({ setOpenPage, openPage, Name, Email, UserImg, selectedOption }) {
+
+function Content({ setOpenPage, openPage, Name, Email, UserImg, selectedOption, content, setContent }) { 
   return (
     <div className='Content'>
       {openPage === 'Home' && <HomeContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>}
       {openPage === 'Planner' && <PlannerContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>}
-      {openPage === 'Subject' && <SubjectContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption}/>}
+      {openPage === 'Subject' && <SubjectContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} content={content} setContent={setContent}/>}
     </div>
   );
 }
