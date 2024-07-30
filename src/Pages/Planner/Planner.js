@@ -28,6 +28,7 @@ const Planner = ({Email, Uid}) => {
       const [error, setError] = React.useState(false);
       const [selectedDate, setSelectedDate] = useState(null);
       
+      
       const handleDateChange = (date) => {
             setSelectedDate(date);
       };
@@ -42,8 +43,8 @@ const Planner = ({Email, Uid}) => {
             // Format the selected date to a valid string format (e.g., 'YYYY-MM-DD')
             const formattedDate = selectedDate ? dayjs(selectedDate).format('YYYY-MM-DD') : null;
 
-            // Check if any of the variables is empty
-            if (!titleElement || !typeElement || !formattedDate) {
+            // Check if any of the variables is empty or contains only special characters
+            if (!titleElement.value.trim() || !typeElement.value.trim() || !formattedDate) {
                   setError(true);
                   setTimeout(() => {
                         setError(false);
@@ -56,7 +57,20 @@ const Planner = ({Email, Uid}) => {
                   title: titleElement.value,
                   type: typeElement.value,
                   date: formattedDate,
+                  completed: false,
             };
+
+            const updateTaskStatus = (taskId, completed) => {
+                  const db = getDatabase();
+                  const UidStr = String(Uid);
+                  set(ref(db, `users/${UidStr}/tasks/${taskId}/completed`), completed)
+                    .then(() => {
+                      console.log('Task status updated successfully');
+                    })
+                    .catch((error) => {
+                      console.error('Error updating task status:', error);
+                    });
+                };
 
             // Now use the task object to set in Firebase
             const generatedTaskIds = new Set(); // Create a Set to store generated task IDs
@@ -87,6 +101,30 @@ const Planner = ({Email, Uid}) => {
       ];
 
       const [tasks, setTasks] = useState([]);
+
+      const sortedTasks = [...tasks].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+          
+            const isToday = date.toDateString() === today.toDateString();
+            const isTomorrow = date.toDateString() === tomorrow.toDateString();
+          
+            if (isToday) {
+              return 'Today';
+            } else if (isTomorrow) {
+              return 'Tomorrow';
+            } else {
+              const [year, month, day] = dateString.split('-');
+              return `${day}/${month}/${year}`;
+            }
+          };
+
+
+          
 
       useEffect(() => {
             const db = getDatabase();
@@ -130,16 +168,21 @@ const Planner = ({Email, Uid}) => {
                         
                         <div className='content'>
                               <div className='tasks'>
-                                    {tasks.map((task) => (
-                                          <Task
-                                          key={task.id}
-                                          title={task.title}
-                                          date={task.date}
-                                          type={task.type}
-                                          onDelete={() => handleDeleteTask(task.id)}
-                                          />
-                                    ))}
-                              </div>
+                                    {tasks.length === 0 ? (
+                                    <p className='emty-text'>No tasks scheduled 😊</p>
+                                    ) : (
+                                          sortedTasks.map((task) => (
+                                                <Task
+                                                taskId={task.id}
+                                                Uid={Uid}
+                                                key={task.id}
+                                                title={task.title}
+                                                date={formatDate(task.date)}
+                                                type={task.type}
+                                                onDelete={() => handleDeleteTask(task.id)}
+                                                />
+                                          ))
+                                    )}                              </div>
                               <div classsName='create-task-container'>
                                     <Collapse in={open}>
                                           <Alert severity="success" id='Alert' sx={{ marginBottom: '20px' }} >Task Successfully created</Alert>              

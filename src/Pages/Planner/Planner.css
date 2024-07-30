@@ -105,6 +105,12 @@
       gap: 10px;
 }
 
+.Planner-container .content .emty-text {
+      display: flex;
+      align-self: center;
+}
+
+
 #Alert {
       border-radius: 10px
 }
