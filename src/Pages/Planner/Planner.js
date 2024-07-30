@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Planner.css';
 import FormControl from '@mui/material/FormControl';
+import Task from './task.js';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
@@ -14,7 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 import database from '../../fierbase';
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set, off, onValue, remove } from 'firebase/database';
 import { Margin, TaskSharp } from '@mui/icons-material';
 import dayjs from 'dayjs';
 import Alert from '@mui/material/Alert';
@@ -85,6 +86,43 @@ const Planner = ({Email, Uid}) => {
             { label: 'Exam', id: 2 },
       ];
 
+      const [tasks, setTasks] = useState([]);
+
+      useEffect(() => {
+            const db = getDatabase();
+            const UidStr = String(Uid);
+            const tasksRef = ref(db, `users/${UidStr}/tasks`);
+
+            onValue(tasksRef, (snapshot) => {
+                  const data = snapshot.val();
+                  if (data) {
+                        const taskList = Object.entries(data).map(([taskId, taskData]) => ({
+                              id: taskId,
+                              ...taskData,
+                        }));
+                        setTasks(taskList);
+                  } else {
+                        setTasks([]);
+                  }
+            });
+
+            return () => {
+                  off(tasksRef);
+            };
+      }, [Uid]);
+
+      const handleDeleteTask = (taskId) => {
+            const db = getDatabase();
+            const taskRef = ref(db, `users/${Uid}/tasks/${taskId}`);
+            remove(taskRef)
+                  .then(() => {
+                        console.log('Task deleted successfully');
+                  })
+                  .catch((error) => {
+                        console.error('Error deleting task:', error);
+                  });
+      };
+
       return (
             <>
                   <div className='Planner-container'>
@@ -92,40 +130,15 @@ const Planner = ({Email, Uid}) => {
                         
                         <div className='content'>
                               <div className='tasks'>
-                                    <div className='task-tile'>
-                                          <div className='right-side'>
-                                                <Checkbox size="small" />
-                                                <div className='task-title'>
-                                                      Math S24
-                                                </div>
-                                                <div className='task-date'>
-                                                      05 Jul 2024
-                                                </div>
-                                          </div>
-                                          <div className='left-side'>
-                                                <Chip label="Homework" variant="outlined" />
-                                                <IconButton aria-label="delete">
-                                                      <DeleteIcon />
-                                                </IconButton>
-                                          </div>
-                                    </div>
-                                    <div className='task-tile'>
-                                          <div className='right-side'>
-                                                <Checkbox size="small" />
-                                                <div className='task-title'>
-                                                      German S24
-                                                </div>
-                                                <div className='task-date'>
-                                                      05 Jul 2024
-                                                </div>
-                                          </div>
-                                          <div className='left-side'>
-                                                <Chip label="Homework" variant="outlined" />
-                                                <IconButton aria-label="delete">
-                                                      <DeleteIcon />
-                                                </IconButton>
-                                          </div>
-                                    </div>
+                                    {tasks.map((task) => (
+                                          <Task
+                                          key={task.id}
+                                          title={task.title}
+                                          date={task.date}
+                                          type={task.type}
+                                          onDelete={() => handleDeleteTask(task.id)}
+                                          />
+                                    ))}
                               </div>
                               <div classsName='create-task-container'>
                                     <Collapse in={open}>
