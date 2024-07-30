@@ -14,17 +14,36 @@ import LoginPic from './Imgs/Schedule.svg';
 import EmailIcon from './Icons/envelope.svg';
 import PasswordIcon from './Icons/key.svg';
 import GoogleIcon from './Icons/google_logo-google_icongoogle-512.webp';
-// Import Firebase services using the new modular syntax
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import { ref, get, onValue } from 'firebase/database';
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+import Planner from './Pages/Planner/Planner';
+
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getAuth, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import { getDatabase, ref, get, onValue } from 'firebase/database';
-import katex from 'katex';
-import 'katex/dist/katex.min.css';
+import { getDatabase } from 'firebase/database';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD0wHJnHD5yf1lvWHvwOwHjuzqqPPqr4lY",
+  authDomain: "edusync1-3af45.firebaseapp.com",
+  databaseURL: "https://edusync1-3af45-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "edusync1-3af45",
+  storageBucket: "edusync1-3af45.appspot.com",
+  messagingSenderId: "293958266884",
+  appId: "1:293958266884:web:5e90b1f5e8bea850e80551",
+  measurementId: "G-RX6R0VD61T"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth(app); 
+const db = getFirestore(app); 
+const provider = new GoogleAuthProvider();
 
 const MathRenderer = ({ children }) => {
   useEffect(() => {
@@ -47,23 +66,7 @@ const MathRenderer = ({ children }) => {
 
 
 
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyD0wHJnHD5yf1lvWHvwOwHjuzqqPPqr4lY",
-  authDomain: "edusync1-3af45.firebaseapp.com",
-  databaseURL: "https://edusync1-3af45-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "edusync1-3af45",
-  storageBucket: "edusync1-3af45.appspot.com",
-  messagingSenderId: "293958266884",
-  appId: "1:293958266884:web:5e90b1f5e8bea850e80551",
-  measurementId: "G-RX6R0VD61T"
-};
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const auth = getAuth(app); // Correctly use getAuth with the Firebase app instance
-const db = getFirestore(app); // Correctly use getFirestore with the Firebase app instance
-const provider = new GoogleAuthProvider();
-// Continue with your code, now using `auth` for authentication related operations
+
 
 
 
@@ -246,7 +249,7 @@ function MainMenuElement ({title, img, openPage, setOpenPage}) {
 
 
 //Menu
-function Menu({openPage, setOpenPage, Name, Email, UserImg}) {
+function Menu({openPage, setOpenPage, Name, Email, UserImg, Uid}) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [content, setContent] = useState(null);
 
@@ -278,7 +281,7 @@ function Menu({openPage, setOpenPage, Name, Email, UserImg}) {
       <TopBar setOpenPage={setOpenPage} openPage={openPage} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
         <div className='Menu'>
           <SideBar setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
-          <Content setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} setSelectedOption={setSelectedOption} content={content} setContent={setContent}/>
+          <Content setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} setSelectedOption={setSelectedOption} content={content} setContent={setContent} Uid={Uid}/>
         </div>
     </>
   );
@@ -300,15 +303,6 @@ function HomeContent({ Name }) {
       </div>
     </div>
   );
-}
-
-function PlannerContent(props) {
-  return (
-    <div className='PlannerContent'>
-      <h1>Planner</h1>
-    </div>
-  );
-
 }
 
 function SubjectContent({ selectedOption, setOpenPage, openPage, content, setContent }) {
@@ -339,12 +333,12 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
 }
 
 
-function Content({ setOpenPage, openPage, Name, Email, UserImg, selectedOption, content, setContent }) { 
+function Content({ setOpenPage, openPage, Name, Email, UserImg, selectedOption, content, setContent, Uid }) { 
   return (
     <div className='Content'>
       {openPage === 'Home' && <HomeContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>}
-      {openPage === 'Planner' && <PlannerContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>}
       {openPage === 'Subject' && <SubjectContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} content={content} setContent={setContent}/>}
+      {openPage === 'Planner' && <Planner setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} Uid={Uid}/>}
     </div>
   );
 }
@@ -377,7 +371,7 @@ function Login(setOpenPage, setUser) {
             <input type='password' placeholder='******'/>
           </div>
           <div className='Options'>
-            <div className='n</div>oPass'>Email Login ?</div>
+            <div className='noPass'>Email Login ?</div>
             <div className='ForgotPassword'>Forgot Password?</div>
           </div>
           <div className='LoginButton' onClick={() => {
@@ -428,6 +422,7 @@ function App(props) {
   const [user, setUser] = useState(null);
   const [Name, setName] = useState('');
   const [Email, setEmail] = useState('');
+  const [Uid , setUid] = useState('');
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -435,11 +430,13 @@ function App(props) {
         setUser(user);
         setName(user.displayName);
         setEmail(user.email);
+        setUid(user.uid);
         setOpenPage('Home')
       } else {
         setUser(null);
         setName('');
         setEmail('');
+        setUid('');
         setOpenPage('Login')
       }
     });
@@ -462,7 +459,7 @@ function App(props) {
   return (
     <div className="App">
       {user !== null ? (
-        <Menu setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} />
+        <Menu setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} Uid={Uid} />
       ) : (
         <Login setOpenPage={setOpenPage} openPage={openPage} setUser={setUser} />
       )}

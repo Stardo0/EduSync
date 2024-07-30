@@ -1,0 +1,110 @@
+.Planner-container {
+      margin: 20px;
+      padding-bottom: 100px;
+}
+
+.Planner-container .Title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 20px;
+}
+
+.Planner-container .content {
+      width: 100%;
+      height: 500px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: start;
+      gap: 3%;
+}
+
+.Planner-container .content .tasks {
+      background-color: white;
+      height: 100%;
+      width: 65%;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+}
+
+.Planner-container .content .create-task-container {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      width: 35%;
+}
+
+.Planner-container .content .create-task {
+      background-color: white;
+      height: auto;
+      width: 100%;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 0.1px 0px;
+}
+
+.Planner-container .content .create-task .container {
+      margin: 20px;
+}
+
+.Planner-container .content .create-task .container .create-task-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+}
+
+
+
+.Planner-container .content .create-task .container .input-fields {
+      display: flex;
+      flex-direction: column; 
+      width: 100%;
+      gap: 15px;
+}
+
+.Planner-container .content .create-task .container .date-picker {
+      padding-top: 8px;
+}
+
+.Planner-container .content .tasks   {
+      padding: 20px;
+}
+
+.Planner-container .content .tasks .task-tile {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      background-color: #FAFAFA;
+      border-radius: 20px;
+      padding: 2px 1px;
+}
+
+.Planner-container .content .tasks .task-tile .right-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.Planner-container .content .tasks .task-tile .right-side .task-title {
+      font-size: 17px;
+      font-weight: 400;
+}
+
+.Planner-container .content .tasks .task-tile .task-date {
+      font-size: 13px;
+      font-weight: 200;
+      margin-left: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.Planner-container .content .tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+}
+
+#Alert {
+      border-radius: 10px
+}
