@@ -331,7 +331,7 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
           </div>
 
           <div className='SideMenu'>
-            TODO: Add Side Menu
+            <img src='https://us.123rf.com/450wm/shushanto/shushanto2209/shushanto220900703/191842443-destruction-of-planets-concept-art-illustration-background-image.jpg?ver=6'></img>
           </div>
 
       </div>
