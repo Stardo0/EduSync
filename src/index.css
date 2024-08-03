@@ -371,8 +371,22 @@ height: 100vh;
   padding: 20px;
   gap: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 50px;
+}
+
+.SubjectContent .container .text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+}
+
+.SubjectContent .container .SideMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 20%;
 }
 
 .SubjectContent .ButtonContainer {

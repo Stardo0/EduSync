@@ -313,19 +313,27 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
   return (
     <>
     <div className='SubjectContent'>
+
       <div className='ButtonContainer'>
         <div className='backButtom' onClick={() => setOpenPage("Home")}><img src={Back} alt="Icon" width='15px'></img>Back</div>
       </div>
+
       <div className='container'>
-        <h1 className='title'>{selectedOption.label}</h1>
           <div className='text'>
-            {/* Zeige nur den Wert von "TEst" als HTML an, wenn content ein Objekt ist */}
-            {content && typeof content === 'object' && content.HTML ? (
-              <div dangerouslySetInnerHTML={{ __html: content.HTML }} />
-            ) : (
-              content === null ? <div>Error fetching data | Sorry 😕</div> : <pre>{JSON.stringify(content, null, 2)}</pre>
-            )}
+            <h1 className='title'>{selectedOption.label}</h1>
+            <div className='text'>
+              {content && typeof content === 'object' && content.HTML ? (
+                <div dangerouslySetInnerHTML={{ __html: content.HTML }} />
+              ) : (
+                content === null ? <div>Error fetching data | Sorry 😕</div> : <pre>{JSON.stringify(content, null, 2)}</pre>
+              )}
+            </div>
           </div>
+
+          <div className='SideMenu'>
+            TODO: Add Side Menu
+          </div>
+
       </div>
     </div>
     </>
