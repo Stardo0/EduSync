@@ -14,10 +14,14 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "crypto-browserify": "^3.12.0",
     "dayjs": "^1.11.12",
+    "dotenv": "^16.4.5",
     "firebase": "^10.12.2",
     "katex": "^0.16.11",
     "mathjax": "^3.2.2",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -48,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "react-app-rewired": "^2.2.1",
     "react-router-dom": "^6.24.0",
     "tailwindcss": "^3.4.4"
   }
