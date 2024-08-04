@@ -165,7 +165,6 @@ const Planner = ({Email, Uid}) => {
             <>
                   <div className='Planner-container'>
                         <div className='Title'>Planner</div>
-                        
                         <div className='content'>
                               <div className='tasks'>
                                     {tasks.length === 0 ? (
@@ -191,7 +190,6 @@ const Planner = ({Email, Uid}) => {
                                           <Alert severity="error" id='Alert' sx={{ marginBottom: '20px' }} >Please fill in all the fields</Alert>              
                                     </Collapse>
                                     <div className='create-task'>
-                                          
                                           <div className='container'>
                                                 <div className='create-task-title'>
                                                       Create Task

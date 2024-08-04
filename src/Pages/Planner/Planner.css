@@ -1,12 +1,19 @@
 .Planner-container {
       margin: 20px;
       padding-bottom: 100px;
+      width: 95%;
+      display: flex;
+      flex-direction: column;
 }
 
 .Planner-container .Title {
       font-size: 30px;
       font-weight: bold;
       margin-bottom: 20px;
+      width: 100%;
+      justify-content: flex-start;
+      display: flex;
+      margin-left: calc(10% / 2);
 }
 
 .Planner-container .content {
