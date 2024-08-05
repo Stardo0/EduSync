@@ -263,6 +263,7 @@ function Menu({openPage, setOpenPage, Name, Email, UserImg, Uid}) {
       setOpenPage("Home");
       setContent(null);
       setImgURL(null); // imgURL zurücksetzen
+      setedit(false);
     } else {
       get(ref(database, 'subjects/' + selectedOption.label + '/content'))
         .then((snapshot) => {
@@ -379,7 +380,11 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
 function Content({ setOpenPage, openPage, Name, Email, UserImg, selectedOption, content, setContent, Uid, imgURL, edit, setedit }) { 
 
   
-
+  useEffect(() => {
+    if (openPage === 'Subject') {
+      setedit(false);
+    }
+  }, [openPage, setedit]);
 
   return (
     <div className='Content'>
