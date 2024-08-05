@@ -332,7 +332,7 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
   }
   return (
     <>
-    <div className='SubjectContent'>
+    <div className='SubjectContent' style={{ marginTop: '10px' }}>
 
       <div className='ButtonContainer'>
         <div className='backButtom' onClick={() => setOpenPage("Home")}><img src={Back} alt="Icon" width='15px'></img>Back</div>
@@ -348,7 +348,8 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
                     <div className='editor-container'>
                       <Editor initialContent={content.HTML} />
                       <Stack spacing={2} direction="row">
-                        <Button variant="contained" >Save</Button>
+                        <Button variant="contained" style={{ marginTop: '10px' }} >Save</Button>
+                        <Button variant="outlined" style={{ marginTop: '10px' }} onClick={() => setedit(false)} >End editing</Button>
                       </Stack>
                     </div>
                   ) : (
