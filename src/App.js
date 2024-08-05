@@ -348,7 +348,7 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
                     <div className='editor-container'>
                       <Editor initialContent={content.HTML} />
                       <Stack spacing={2} direction="row">
-                        <Button variant="contained" onClick={() => setedit(false)}>End editing</Button>
+                        <Button variant="contained" >Save</Button>
                       </Stack>
                     </div>
                   ) : (

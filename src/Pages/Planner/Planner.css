@@ -13,7 +13,6 @@
       width: 100%;
       justify-content: flex-start;
       display: flex;
-      margin-left: calc(10% / 2);
 }
 
 .Planner-container .content {
