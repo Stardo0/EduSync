@@ -28,6 +28,19 @@ const Planner = ({Email, Uid}) => {
       const [error, setError] = React.useState(false);
       const [selectedDate, setSelectedDate] = useState(null);
       
+      function clearInputsInDiv(divId) {
+            // Wähle das div-Element anhand der ID
+            const div = document.getElementById(divId);
+            
+            // Wähle alle input-Elemente innerhalb des div
+            const inputs = div.getElementsByTagName('input');
+            
+            // Iteriere über die input-Elemente und setze deren Wert auf einen leeren String
+            for (let i = 0; i < inputs.length; i++) {
+              inputs[i].value = '';
+            }
+          }
+
       
       const handleDateChange = (date) => {
             setSelectedDate(date);
@@ -66,6 +79,7 @@ const Planner = ({Email, Uid}) => {
                   set(ref(db, `users/${UidStr}/tasks/${taskId}/completed`), completed)
                     .then(() => {
                       console.log('Task status updated successfully');
+
                     })
                     .catch((error) => {
                       console.error('Error updating task status:', error);
@@ -84,6 +98,7 @@ const Planner = ({Email, Uid}) => {
             set(ref(db, `users/${UidStr}/tasks/${taskId}`), task)
                   .then(() => {
                         console.log('Task created successfully');
+                        clearInputsInDiv('create-task');
                   })
                   .catch((error) => {
                         console.error('Error creating task:', error);
@@ -189,7 +204,7 @@ const Planner = ({Email, Uid}) => {
                                     <Collapse in={error}>
                                           <Alert severity="error" id='Alert' sx={{ marginBottom: '20px' }} >Please fill in all the fields</Alert>              
                                     </Collapse>
-                                    <div className='create-task'>
+                                    <div className='create-task' id='create-task'>
                                           <div className='container'>
                                                 <div className='create-task-title'>
                                                       Create Task
