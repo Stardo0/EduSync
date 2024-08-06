@@ -1,5 +1,5 @@
 # EduSync
 
-A Education platfor for studenst 📚
+A Education platform for studenst 📚
 
 https://edusync.info/
