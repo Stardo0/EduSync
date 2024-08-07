@@ -40,7 +40,6 @@ const Planner = ({Email, Uid}) => {
               inputs[i].value = '';
             }
           }
-
       
       const handleDateChange = (date) => {
             setSelectedDate(date);

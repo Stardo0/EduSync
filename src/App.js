@@ -347,11 +347,7 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
                 <>
                   {edit ? (
                     <div className='editor-container'>
-                      <Editor initialContent={content.HTML} />
-                      <Stack spacing={2} direction="row">
-                        <Button variant="contained" style={{ marginTop: '10px' }} >Save</Button>
-                        <Button variant="outlined" style={{ marginTop: '10px' }} onClick={() => setedit(false)} >End editing</Button>
-                      </Stack>
+                      <Editor initialContent={content.HTML} selectedOption={selectedOption} setedit={setedit} />
                     </div>
                   ) : (
                     <div dangerouslySetInnerHTML={{ __html: content.HTML }} />
