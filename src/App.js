@@ -326,7 +326,7 @@ function HomeContent({ Name }) {
   );
 }
 
-function SubjectContent({ selectedOption, setOpenPage, openPage, content, setContent, imgURL, edit, setedit }) {
+function SubjectContent({ selectedOption, setOpenPage, openPage, content, setContent, imgURL, edit, setedit, Uid }) {
   if (!selectedOption || !selectedOption.label) {
     setOpenPage("Home");
     return null;
@@ -347,10 +347,10 @@ function SubjectContent({ selectedOption, setOpenPage, openPage, content, setCon
                 <>
                   {edit ? (
                     <div className='editor-container'>
-                      <Editor initialContent={content.HTML} selectedOption={selectedOption} setedit={setedit} />
+                      <Editor initialContent={content.HTML} selectedOption={selectedOption} setedit={setedit} Uid={Uid} />
                     </div>
                   ) : (
-                    <div dangerouslySetInnerHTML={{ __html: content.HTML }} />
+                    <div dangerouslySetInnerHTML={{ __html: content.HTML }} className="disabled"/>
                   )}
                 </>
               ) : (
@@ -385,7 +385,7 @@ function Content({ setOpenPage, openPage, Name, Email, UserImg, selectedOption, 
   return (
     <div className='Content'>
       {openPage === 'Home' && <HomeContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg}/>}
-      {openPage === 'Subject' && <SubjectContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} content={content} setContent={setContent} imgURL={imgURL} edit={edit} setedit={setedit}/>}
+      {openPage === 'Subject' && <SubjectContent setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} selectedOption={selectedOption} content={content} setContent={setContent} imgURL={imgURL} edit={edit} setedit={setedit} Uid={Uid}/>}
       {openPage === 'Planner' && <Planner setOpenPage={setOpenPage} openPage={openPage} Name={Name} Email={Email} UserImg={UserImg} Uid={Uid}/>}
     </div>
   );

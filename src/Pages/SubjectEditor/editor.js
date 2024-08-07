@@ -11,9 +11,23 @@ const Editor = ({ initialContent, selectedOption, setedit }) => {
   const quillRef = useRef(null);
 
   useEffect(() => {
+
+    const toolbarOptions = [
+      [{ 'header': [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['link', 'image'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'align': [] }],
+      ['clean'] // Entfernt Formatierungen
+    ];
+
     if (!quillRef.current) {
       quillRef.current = new Quill('#editor', {
-        theme: 'snow'
+        theme: 'snow',
+        modules: {
+          toolbar: toolbarOptions
+        }
       }); 
       if (initialContent) {
         quillRef.current.clipboard.dangerouslyPasteHTML(initialContent);
@@ -29,18 +43,22 @@ const Editor = ({ initialContent, selectedOption, setedit }) => {
       return;
     }
   
-    const contentRef = ref(database, `subjects/${selectedOption.label}/requests`);
+    const Uid = '4c9U9MwCqSbydQU5M8HnPK82b9C2'; // Replace with the actual Uid variable if it's dynamic
   
-    push(contentRef, {
-      html: editorContent
-    })
-    .then(() => {
-      console.log('HTML content saved successfully.');
-      setedit(false);
-    })
-    .catch((error) => {
-      console.error('Error saving HTML content:', error);
-    });
+    if (Uid === '4c9U9MwCqSbydQU5M8HnPK82b9C2') {
+      const contentRef = ref(database, `subjects/${selectedOption.label}/content/HTML`);
+  
+      set(contentRef, editorContent)
+        .then(() => {
+          console.log('HTML content saved successfully.');
+          setedit(false);
+        })
+        .catch((error) => {
+          console.error('Error saving HTML content:', error);
+        });
+    } else {
+      console.error('Invalid Uid:', Uid);
+    }
   };
 
 

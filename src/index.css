@@ -155,7 +155,7 @@ body {
 }
 
 .Content {
-  margin-top: 55px;
+  margin-top: 44px;
 }
 
 .HomeContent {
@@ -428,6 +428,7 @@ height: 100vh;
 .SubjectContent .ButtonContainer {
   width: 90%;
   padding-right: 35px;
+  margin-top: 10px;
 }
 
 .SubjectContent .ButtonContainer .backButtom {
@@ -468,3 +469,14 @@ height: 100vh;
   margin: 0px;
 }
 
+.ql-tooltip {
+  display: none;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.ql-editor {
+  padding: 0px !important;
+}
