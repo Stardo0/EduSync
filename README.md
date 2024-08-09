@@ -1,9 +1,21 @@
 # EduSync
 
-A Education platform for studenst 📚
+An education platform for students 📚
 
-https://edusync.info/
+[Visit EduSync](https://edusync.info/)
 
-# Demo
+## Demo
 
-Test now https://edu-sync-azure.vercel.app/
+[Test EduSync Now](https://edu-sync-azure.vercel.app/)
+
+## Features
+
+1. **Subjects**  
+   Find subjects with detailed explanations.
+
+2. **Planner**  
+   Plan your week efficiently.
+
+3. **Coming Soon**  
+   Stay tuned for more features!
+
